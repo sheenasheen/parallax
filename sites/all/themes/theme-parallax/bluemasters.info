@@ -1,5 +1,5 @@
-name = Blue Masters
-description = A responsive theme based on Blue Masters PSD template, supported by <a href="http://www.morethanthemes.com/" target="_blank">More than (just) Themes</a>. If you like this theme, we encourage you to try also our other <a href="http://www.morethanthemes.com" target="_blank">Premium</a> and <a href="http://drupalizing.com" target="_blank">Free</a> Drupal themes.
+name = Salmon Parallax
+description = A responsive theme based on Skeleton responsive template,
 version = VERSION
 core = 7.x
 engine = phptemplate
