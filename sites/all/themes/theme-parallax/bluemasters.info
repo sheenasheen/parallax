@@ -9,6 +9,10 @@ stylesheets[all and (min-width: 760px) and (max-width: 979px)][] = css/720.css
 stylesheets[all and (max-width: 759px)][] = css/mobile.css
 stylesheets[all][] = css/style.css
 
+;JS
+
+regions[custom] = Custom
+
 regions[header] = Header
 regions[search_area] = Search area
 regions[navigation] = Navigation
