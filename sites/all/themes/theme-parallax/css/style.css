@@ -140,8 +140,9 @@ HTML[xmlns] .clearfix
  */
 #header-top-inside
 {
-	height: 52px;
-	margin: 0 auto;
+	background: #16A085;
+	width: 100%;
+	height: 3px;
 }
 #header-top-inside-left
 {
@@ -199,7 +200,7 @@ HTML[xmlns] .clearfix
 }
 #header
 {
-	padding: 29px 0 21px;
+	background: rgba(25, 27, 28, 0.7);
 }
 #logo-floater
 {
@@ -227,7 +228,7 @@ HTML[xmlns] .clearfix
 #navigation
 {
 	float: right;
-	margin: 10px 0 0 40px;
+	margin: 45px 0 0 40px;
 	display: block;
 }
 #highlighted
@@ -332,8 +333,8 @@ HTML[xmlns] .clearfix
  */
 #home-blocks-area
 {
-	background-image: url(../images/home-block-box-bg.png);
-	padding: 20px 10px 0;
+	background: #16A085;
+	padding: 20px 0 0;
 	min-height: 100px;
 	overflow: hidden;
 	clear: both;
@@ -1179,7 +1180,7 @@ UL.pager A:hover
 }
 /*
 * Front-page Slider
- 
+
 Browser Resets*/
 .flex-container A:active, .flexslider A:active, .flex-container A:focus, .flexslider A:focus
 {
@@ -1446,7 +1447,7 @@ A.drupalizing:link, A.drupalizing:active, A.drupalizing:visited, A.drupalizing:h
 }
 /*
 * EXTRA
- 
+
 ---------------------------------------------------------------------*/
 TABLE
 {
@@ -1520,7 +1521,7 @@ DIV.messages
 }
 /*
 * Responsive styles
- 
+
 LANDSCAPE PHONE TO DOWN
 #home-blocks-area*/
 @media (max-width: 480px)
@@ -1556,11 +1557,15 @@ top header*/
 		padding: 20px 0 0;
 		display: inline-block;
 	}
-	/*header*/
-	#header
-	{
-		padding: 120px 0 21px;
-	}
+}
+/*header*/
+#header
+{
+	width: 100%;
+	text-align: center;
+}
+@media all and (max-width: 759px)
+{
 	#logo-floater
 	{
 		text-align: center;

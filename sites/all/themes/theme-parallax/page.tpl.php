@@ -1,47 +1,11 @@
 <div id="page">
 
     <!--header-top-->
-    <div id="header-top">
-        <div id="header-top-inside" class="clearfix container_12">
-        	
-            <div class="grid_7">
-                <!--header-top-inside-left-->
-                <div id="header-top-inside-left"><?php print render($page['header']); ?></div>
-                <!--EOF:header-top-inside-left-->
-            </div>
-            
-            <div class="grid_2">
-                <!--header-top-inside-left-feed-->
-                <div id="header-top-inside-left-feed">
-                    <div id="topSocial">
-                    <ul>									
-                        <li><a class="twitter" href="http://twitter.com/morethanthemes" title="Follow Us on Twitter!"></a></li>
-                        <li><a class="facebook" href="http://www.facebook.com/pages/More-than-just-themes/194842423863081" title="Join Us on Facebook!"></a></li>
-                        <li><a class="rss" title="RSS" href="#" title="Subcribe to Our RSS Feed"></a></li>
-                    </ul>
-                    </div>
-                </div>
-                <!--EOF:header-top-inside-left-feed-->
-            </div>
-            
-            <div class="grid_3">
-                <!--header-top-inside-left-right-->
-                <div id="header-top-inside-right"><?php print render($page['search_area']);?></div> 
-                <!--EOF:header-top-inside-left-right-->
-            </div>
-             
-        </div>
-    </div>
-    <!--EOF:header-top-->
-
-    <div id="wrapper">
-
-        <!--header-->
-        <div id="header" class="clearfix container_12">
-        	
-            <div class="grid_5">
-                <!--logo-floater-->
-                <div id="logo-floater"> 
+    <div id="header-top"><div id="container" class="container_12">
+    <div id="header" class="grid_12">
+    
+     <div id="logo-floater"class="grid_2 alpha"> 
+     
         			<?php if ($logo): ?>
                     <a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>">
                     <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
@@ -62,6 +26,56 @@
                 </div> 
                 <!--EOF:logo-floater-->
             </div>
+            </div>
+            <div id="navigation" div class="grid_10 omega">
+              
+                    <?php if ($page['navigation']) :?>
+                    <?php print drupal_render($page['navigation']); ?>
+                    <?php else :
+                    if (module_exists('i18n_menu')) {
+                    $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
+                    } else { $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); }
+                    print drupal_render($main_menu_tree);
+                    endif; ?>
+                </div>
+            </div>
+        <div id="header-top-inside" class="clearfix container_12">
+                <!--header-top-inside-left-->
+                <div id="header-top-inside-left"><?php print render($page['header']); ?></div>
+                <!--EOF:header-top-inside-left-->
+                
+               
+            
+            <div class="grid_2">
+                <!--header-top-inside-left-feed
+                <div id="header-top-inside-left-feed">
+                    <div id="topSocial">
+                    <ul>									
+                        <li><a class="twitter" href="http://twitter.com/morethanthemes" title="Follow Us on Twitter!"></a></li>
+                        <li><a class="facebook" href="http://www.facebook.com/pages/More-than-just-themes/194842423863081" title="Join Us on Facebook!"></a></li>
+                        <li><a class="rss" title="RSS" href="#" title="Subcribe to Our RSS Feed"></a></li>
+                    </ul>
+                    </div>
+                </div>-->
+                <!--EOF:header-top-inside-left-feed-->
+            </div>
+            
+            <div class="grid_3">
+                <!--header-top-inside-left-right-->
+                <div id="header-top-inside-right"><?php print render($page['search_area']);?></div> 
+                <!--EOF:header-top-inside-left-right-->
+            </div>
+             
+        </div>
+    </div>
+    <!--EOF:header-top-->
+
+    <div id="wrapper">
+
+        <!--header-->
+       
+                <!--logo-floater-->
+                
             
             <div class="grid_7">
                 <!--navigation-->

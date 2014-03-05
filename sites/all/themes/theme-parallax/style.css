@@ -45,7 +45,7 @@ html[xmlns] .clearfix { display: block; }
 /*
  * Header-top
  */
-#header-top-inside {  height:52px; width:950px; margin:0 auto; }
+#header-top-inside {  height:10%; width:100%; margin:0 auto; color: #ffffff; }
 
 #header-top-inside-left { float:left; text-align:left; padding:20px 0 0 0; width:660px; color:#485766; font-family: Verdana, Arial, Helvetica, sans-serif; font-size:80%; }
 
