@@ -240,7 +240,8 @@ HTML[xmlns] .clearfix
 #navigation
 {
 	float: right;
-	margin: 45px 0 0 40px;
+	margin: 24px 0 0 40px;
+	padding: 0 0 0px;
 	display: block;
 }
 #highlighted
@@ -1008,21 +1009,22 @@ UL.pager A:hover
 #navigation UL.menu LI A, #navigation UL.sf-menu LI A
 {
 	outline: none;
-	padding: 5px 10px;
+	padding: 5px 5px 3px;
 	text-decoration: none;
+	border: 2px solid transparent;
 	display: block;
-	color: #7A8090;
+	color: #FFFFFF;
 	font-size: 17px;
-	font-weight: bold;
 	text-align: center;
 }
 #navigation UL.menu LI A:hover, #navigation UL.menu LI A.active, #navigation UL.sf-menu LI A:hover, #navigation UL.sf-menu LI A.active
 {
 	text-decoration: none;
-	color: #16A085;
-	border: 3px solid #16A085;
+	color: #FFFFFF;
+	border: 2px solid #16A085;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
+	padding: 5px 5px 3px;
 	background: transparent;
 }
 #navigation UL.menu LI A:after, #navigation UL.sf-menu LI A:after
