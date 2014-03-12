@@ -3,6 +3,14 @@
 	margin: 0;
 	padding: 0;
 }
+@font-face
+{
+	font-family: aaarghnormal;
+	src: url('font/Aaargh-webfont.eot');
+	src: url('font/Aaargh-webfont.eot?#iefix') format('embedded-opentype'), url('font/Aaargh-webfont.woff') format('woff'), url('font/Aaargh-webfont.ttf') format('truetype'), url('font/Aaargh-webfont.svg#aaarghnormal') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 .column-fix
 {
 	padding: 0 10px;
@@ -61,7 +69,7 @@ IMG A
 }
 H1, H2, H3, H4, H5, H6
 {
-	font-family: Arial, Helvetica, "Sans Serif";
+	font-family: aaarghnormal;
 	margin: 0 0 10px;
 }
 H1
@@ -208,8 +216,9 @@ HTML[xmlns] .clearfix
 #logo-floater
 {
 	float: left;
-	margin: 0;
+	margin: 5px 0 0 10px;
 	text-align: left;
+	/*[empty]height:;*/
 }
 #logo-floater A
 {
@@ -973,6 +982,7 @@ UL.pager A:hover
 	margin: 0;
 	position: relative;
 	z-index: 1;
+	font-family: aaarghnormal;
 }
 #navigation UL.menu:after, #navigation UL.sf-menu:after, #navigation .content:after
 {
@@ -1260,7 +1270,7 @@ If you are not using another script, such as Modernizr, make sure you
 .flexslider
 {
 	background: #FFF;
-	border: 10px solid #FFF;
+	border: 0 solid #FFF;
 	position: relative;
 	margin-bottom: 42px;
 	zoom: 1;
@@ -1313,6 +1323,7 @@ If you are not using another script, such as Modernizr, make sure you
 	bottom: 15px;
 	text-align: center;
 	z-index: 100;
+	display: none;
 }
 .flex-control-nav LI
 {
@@ -1574,14 +1585,14 @@ top header*/
 {
 	width: 100%;
 	text-align: center;
-	z-index: 10000;
+	z-index: 99998;
 	position: fixed;
 }
 @media all and (max-width: 759px)
 {
 	#logo-floater
 	{
-		text-align: center;
+		text-align: left;
 		float: none;
 	}
 	/*main navigation*/
@@ -1630,6 +1641,7 @@ top header*/
 	#footer-bottom-inside, #footer-bottom-inside-right UL#secondary-menu, #footer-bottom-inside-right UL.menu
 	{
 		text-align: center;
+		background: url(images/slide-image-1.jpg);
 	}
 	#footer-bottom-inside-right UL#secondary-menu LI, #footer-bottom-inside-right UL.menu LI
 	{
