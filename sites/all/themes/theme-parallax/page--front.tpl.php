@@ -13,12 +13,7 @@
             <div class="grid_2">
                 <!--header-top-inside-left-feed-->
                 <div id="header-top-inside-left-feed">
-                    <div id="topSocial">
-                    <ul>									
-                        <li><a class="twitter" href="http://twitter.com/morethanthemes" title="Follow Us on Twitter!"></a></li>
-                        <li><a class="facebook" href="http://www.facebook.com/pages/More-than-just-themes/194842423863081" title="Join Us on Facebook!"></a></li>
-                        <li><a class="rss" title="RSS" href="#" title="Subcribe to Our RSS Feed"></a></li>
-                    </ul>
+                    
                     </div>
                 </div>
                 <!--EOF:header-top-inside-left-feed-->
@@ -140,6 +135,15 @@
         <div class="container_12">
           
             <div class="grid_12">
+             <div id="parallax-bottom">
+        
+        <div id="footer-bottom-inside" class="clearfix container_12">
+
+            <div class="grid_12">
+        	       
+            </div>
+
+        </div>
                 <!--home-block-area-->
                 <div id="home-blocks-area" class="clearfix">
                 

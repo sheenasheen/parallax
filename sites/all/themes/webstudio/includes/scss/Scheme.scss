@@ -1,0 +1,417 @@
+// $Wrapper: {$Wrapper};
+// $atrs: {$atrs};
+// $c  : {$color};
+// $cop: {$cop};
+
+// $b  : {$bgc};
+// $bop: {$bop};
+
+// $h  : {$hover};
+// $hop: {$hop};
+
+// $l  : {$link};
+// $lop: {$lop};
+
+// $s  : {$shadow};
+// $sop: {$sop};
+
+// $br : {$border} !default;
+// $bro: {$bro};
+
+@import "mixins";
+
+@if $atrs {
+  ##{$Wrapper} {@extend %Wrapper;}
+} @else {
+  #{$Wrapper} {@extend %Wrapper;}
+}
+
+
+
+%Wrapper {
+
+
+@if $c!=false and $l!=false {
+
+			// selection($color,$background);
+  	// @include selection($c,$l);
+
+}
+
+
+// Text Color (c/cop)
+// ==================================================
+  @if $c {
+
+    @if $cop {
+      $c: rgba($c,$cop);
+    }
+
+    color: $c;
+
+    .text-bg { background-color: $c; }
+    .text-color{ color: $c; }
+    .muted { color: lighten($c,20%); }
+    a.muted:hover,
+    a.muted:focus{ color: darken($c, 10%); }
+
+
+    .help-block, .help-inline {
+      color: lighten($c,20%);
+    }
+
+  }
+
+// Background (b/bop)
+// ==================================================
+  @if $b {
+
+    @if $bop {
+      $b : rgba($b,$bop);
+    }
+
+    background-color: $b;
+
+    .background-bg { background-color:$b; }
+    .background-color{ color: $b; }
+
+    article.node-blog footer {
+      background-color: darken($b,5%);
+    }
+
+    .breadcrumb {
+      background-color: darken($b,5%);
+      > li {
+        text-shadow: inherit;
+      }
+    }
+
+    .pagination ul > li > a,
+    .pagination ul > li > span {
+      background-color: darken($b,5%);
+    }
+
+  }
+
+// Text Shadow (s/sop)
+// ==================================================
+  @if $s {
+
+    @if $sop {
+      $s: rgba($s,$sop);
+    }
+
+    * {
+      text-shadow: 1px 1px 2px $s;
+    }
+
+    text-shadow: 1px 1px 2px $s;
+
+    .btn-link {
+      text-shadow: 1px 1px 2px $s !important;
+    }
+    .alert * {
+      text-shadow: none;
+    }
+
+
+  }
+
+
+// Link & Hover (l/lop & h/hop)
+// ==================================================
+  @if $l {
+    @if $lop {
+      $l: rgba($l,$lop);
+    }
+
+    a:not(.btn) { color: $l; }
+    // .line80 { background-color: $l; }
+
+    [class*=" line-"],
+    [class^="line-"] {
+      background-color: $l;
+    }
+
+  }
+
+  @if $h {
+    @if $hop {
+      $h: rgba($h,$hop);
+    }
+
+    .hover-bg { background-color: $h; }
+    .hover-color{ color: $h; }
+
+    a:not(.btn):hover { color: $h; }
+    // a.btn:hover { color: initial; }
+
+    .btn-link:hover,
+    .btn-link:focus {
+      color: $h;
+    }
+
+    a.thumbnail:hover, a.thumbnail:focus {
+      border-color: $l;
+    }
+
+
+  }
+
+  // @if $h { a.btn:hover { color: none; } }
+
+  @if $l {
+
+    .link-bg { background-color:$l; }
+    .link-color{ color: $l; }
+    .btn-link {
+      color: $l;
+      text-shadow:none;
+    }
+
+    textarea:focus,
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="datetime"]:focus,
+    input[type="datetime-local"]:focus,
+    input[type="date"]:focus,
+    input[type="month"]:focus,
+    input[type="time"]:focus,
+    input[type="week"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="url"]:focus,
+    input[type="search"]:focus,
+    input[type="tel"]:focus,
+    input[type="color"]:focus,
+    .uneditable-input:focus {
+      // border-color: rgba(82, 168, 236, 0.8);
+      border-color: rgba($l,0.8);
+      outline: 0;
+      outline: thin dotted 9;
+      /* IE6-9 */
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($l, 0.6);
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($l, 0.6);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($l, 0.6);
+    }
+
+  } // endif
+
+// Border (br/bro)
+// ==================================================
+  @if $br {
+
+    @if $bro {
+      $br: rgba($br,$bro);
+    }
+
+    *:not(.btn) {
+      border-color: $br;
+    }
+
+    .border-bg { background-color: $br; }
+    .border-color { color:$br; }
+
+    .table-bordered,
+    .table th,
+    .table td {
+      border-color: inherit;
+    }
+
+    .accordion-group {
+      border-color: $br;
+    }
+    .accordion-inner {
+      border-top-color: $br;
+    }
+
+    @media (max-width: 767px) {
+      .block-title {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+    }
+
+
+    hr {
+      border-top: 1px solid darken($br,15%);
+      border-bottom: 1px solid $br;
+    }
+
+
+    .custom-border,
+    legend {
+      border-color: $br !important;
+    }
+
+    .nav-tabs.nav-stacked > li > a,
+    .nav-tabs.nav-stacked > li > a:hover {
+      border: 1px solid $br;
+    }
+
+    .nav > li > a:hover,
+    .nav > li > a:focus {
+      background-color: adjust-hue( $br, 20 );
+    }
+
+
+    .dropdown-menu {
+      background-color: adjust-hue( $br, 20 );
+    }
+
+    .nav-tabs .open .dropdown-toggle,
+    .nav-pills .open .dropdown-toggle,
+    .nav > li.dropdown.open.active > a:hover,
+    .nav > li.dropdown.open.active > a:focus {
+      // color: darken( adjust_hue( $br, 16) , 15% );
+      @if $c { @if $cop { $c : rgba($c,$cop); }  color: $c;   }
+      background-color: adjust-hue( $br, 20 );
+      border-color: $br;
+    }
+
+
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus,
+    .dropdown-submenu:hover > a,
+    .dropdown-submenu:focus > a {
+      background-color: lighten( adjust_hue( $br, 16) ,5% );
+      background-image: none;
+    }
+
+    .dropdown-menu > .active > a,
+    .dropdown-menu > .active > a:hover,
+    .dropdown-menu > .active > a:focus {
+      @if $h { @if $hop { $h : rgba($h,$hop); }  color: $h;   }
+      background-color: lighten( adjust_hue( $br, 16) ,5% );
+      background-image: none;
+    }
+
+    .nav-tabs > .active >a,
+    .nav-tabs > .active >a:hover,
+    .nav-tabs > .active >a:focus {
+      border: 1px solid $br;
+      border-bottom-color: transparent;
+      background-color: transparent;
+    }
+
+    .nav-tabs > li >a:hover,
+    .nav-tabs > li > a:focus {
+      border-color: $br $br $br;
+    }
+
+    .big-title ,
+    .page-header,
+    .nav-tabs,
+    .title-line .block-title  {
+      border-bottom: 1px solid $br;
+    }
+
+    .table-striped tbody>tr:nth-child(odd)>td,
+    .table-striped tbody>tr:nth-child(odd)>th {
+      background-color: $br;
+    }
+
+    table {
+      border-color: $br;
+    }
+    .table-bordered th, .table-bordered td {
+      border-left: 1px solid $br;
+    }
+
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"],
+    .uneditable-input {
+      border-color: $br;
+    }
+
+    .resizable-textarea .grippie {
+      background-color: $br;
+      border: 1px solid $br;
+    }
+
+    .form-actions {
+      background-color: $br;
+      border-top: 1px solid $br;
+    }
+
+
+  // Vertical Tabs
+  .vertical-tabs ul.vertical-tabs-list {
+    border-top: 1px solid $br;
+  }
+
+  div.vertical-tabs {
+    border: 1px solid $br;
+  }
+  // Active tabs/
+  .vertical-tabs ul.vertical-tabs-list li.selected {
+    background-color: lighten($br,10%);
+  }
+
+  .vertical-tabs ul.vertical-tabs-list li {
+    background: lighten($br,5%);
+    border: 1px solid $br;
+  }
+
+  .well {
+    background-color: lighten($br,5%);
+    border: 1px solid  $br;
+  }
+  .comment {
+    background-color: lighten($br,5%);
+    border: 1px solid  $br;
+  }
+
+
+  }// endif
+
+
+@if $b {
+
+  @if $bop {
+    $b : rgba($b,$bop);
+  }
+
+  .nav-tabs >.active > a { background-color: $b; }
+
+  .box {
+    background-color: lighten($b,5%);
+    border: 1px solid  darken($b,1%);
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  .uneditable-input {
+    color: invert($b);
+    background-color: adjust-hue( $b, 10 );
+  }
+
+} //endif
+
+}

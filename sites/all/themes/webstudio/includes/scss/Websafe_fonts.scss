@@ -1,0 +1,27 @@
+// $Wrapper: {$Wrapper};
+// $atrs:    {$atrs};
+// $font:    {$font};
+// $weight:  {$weight};
+// $italic: {$italic};
+// $size: {$size};
+
+@if $atrs {
+  .ws .#{$Wrapper} {@extend %Wrapper;}
+} @else {
+  .ws #{$Wrapper} {@extend %Wrapper;}
+}
+
+%Wrapper {
+  font-family: $font;
+  font-weight: $weight;
+
+  @if $size {
+    font-size: $size+px;
+    line-height: 1.6em;
+  }
+
+  @if $italic {
+    font-style: italic;
+  }
+
+}

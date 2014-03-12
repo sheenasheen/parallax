@@ -1,0 +1,152 @@
+  // $Wrapper: {$Wrapper};
+  // $atrs: {$atrs};
+
+  // $top: {$top_padding};
+  // $bottom: {$bottom_padding};
+
+  // $c  : {$color};
+  // $cop: {$cop};
+
+  // $b  : {$bgc} ;
+  // $bop: {$bop};
+  // $bip: {$bip};
+
+  // $h  : {$hover};
+  // $hop: {$hop};
+
+  // $l  : {$link};
+  // $lop: {$lop};
+
+  // $s  : {$shadow};
+  // $sop: {$sop};
+
+  // $br : {$border} !default;
+  // $bro: {$bro};
+
+@if $atrs {
+  ##{$Wrapper} {@extend %Wrapper;}
+} @else {
+  #{$Wrapper} {@extend %Wrapper;}
+}
+
+%Wrapper {
+
+// Background (b/bop) (bip)
+// ==================================================
+  @if $b {
+    @if $bop {
+      $b: rgba($b,$bop);
+    }
+    background-color: $b;
+
+    h1.page-title {
+      span {
+        background-color: $b;
+        display: table;
+          @if $bip {
+            // content: "Beep here!";
+            padding: 0.125em 0.5em;
+          } @else {
+            // content: "Nooo Beeep here!";
+            padding: 0;
+          }
+      }
+    }
+    #PageTitle .breadcrumb {
+        @if $bip {
+          // content: "Beep here!";
+          padding: 0.125em 0.5em;
+        } @else {
+          // content: "Nooo Beeep here!";
+          padding: 0;
+        }
+        background-color: $b;
+    }
+  }
+
+
+// Text Color (c/cop)
+// ==================================================
+  @if $c {
+
+    @if $cop {
+      $c: rgba($c,$cop);
+    }
+
+    color: $c;
+
+    #PageTitle .breadcrumb > li > .divider {
+      color: $c;
+    }
+  }
+
+// Text Shadow (s/sop)
+// ==================================================
+  @if $s {
+
+    @if $sop {
+      $s: rgba($s,$sop);
+    }
+
+    text-shadow: 1px 1px 2px $s;
+
+    #PageTitle .breadcrumb > li {
+      text-shadow: 1px 1px 2px $s;
+    }
+  }
+
+
+// Link & Hover (l/lop & h/hop)
+// ==================================================
+  @if $l {
+    @if $lop {
+      $l: rgba($l,$lop);
+    }
+
+    a:not(.btn) { color: $l; }
+    .line80 { background-color: $l; }
+
+    #PageTitle .breadcrumb a {
+      color: $l;
+    }
+  }
+
+  @if $h {
+    @if $hop {
+      $h: rgba($h,$hop);
+    }
+
+    #PageTitle .breadcrumb a:hover,
+    a:hover { color: $h; }
+
+  }
+
+// Background Image (bip)
+// ==================================================
+  @if $bip {
+
+    @if $bgt == pattern {
+       background: url($bip) repeat left top transparent;
+    }
+
+    @if $bgt == parallax {
+      background-image: url($bip);
+      background-attachment: fixed;
+      background-position: left top;
+    }
+
+  }
+
+
+// Padding (top/bottom)
+// ==================================================
+  @if $top {
+    padding-top: $top+px;
+  }
+
+  @if $bottom {
+    padding-bottom: $bottom+px;
+  }
+
+
+}

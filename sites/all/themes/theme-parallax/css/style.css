@@ -26,7 +26,7 @@ BODY, DIV, SPAN, P, A, IMG, UL, OL, LI, TABLE, TH, TR, TD, FORM, FIELDSET, LEGEN
 BODY
 {
 	padding: 0;
-	background: transparent url(../images/bg.gif) repeat;
+	background: transparent repeat;
 	font: 12px / 1.4 Verdana, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #666666;
@@ -143,6 +143,8 @@ HTML[xmlns] .clearfix
 	background: #16A085;
 	width: 100%;
 	height: 3px;
+	position: fixed;
+	z-index: 99999;
 }
 #header-top-inside-left
 {
@@ -201,6 +203,7 @@ HTML[xmlns] .clearfix
 #header
 {
 	background: rgba(25, 27, 28, 0.7);
+	/*[empty]height:;*/
 }
 #logo-floater
 {
@@ -334,10 +337,11 @@ HTML[xmlns] .clearfix
 #home-blocks-area
 {
 	background: #16A085;
-	padding: 20px 0 0;
+	padding: 0px 0 0;
 	min-height: 100px;
 	overflow: hidden;
-	clear: both;
+	clear: none;
+	width: 100%;
 }
 /*Example overrides*/
 .home-block-area
@@ -428,6 +432,11 @@ HTML[xmlns] .clearfix
 #home-blocks-area .block .content P.post-note A
 {
 	color: #3F9FCF;
+}
+#parallax-bottom
+{
+	width: 100%;
+	background-color: #FFFFFF;
 }
 .ico
 {
@@ -1185,6 +1194,7 @@ Browser Resets*/
 .flex-container A:active, .flexslider A:active, .flex-container A:focus, .flexslider A:focus
 {
 	outline: none;
+	z-index: 999;
 }
 .slides, .flex-control-nav, .flex-direction-nav
 {
@@ -1198,6 +1208,7 @@ Browser Resets*/
 {
 	margin: 0;
 	padding: 0;
+	z-index: 999;
 }
 .flexslider .slides > LI
 {
@@ -1244,7 +1255,7 @@ If you are not using another script, such as Modernizr, make sure you
 {
 	position: relative;
 	padding: 0 0 1px;
-	background: url(../images/slide-shadow.png) no-repeat center 99.5%;
+	background: no-repeat center 100%;
 }
 .flexslider
 {
@@ -1563,6 +1574,8 @@ top header*/
 {
 	width: 100%;
 	text-align: center;
+	z-index: 10000;
+	position: fixed;
 }
 @media all and (max-width: 759px)
 {
@@ -1688,6 +1701,7 @@ main navigation*/
 	#slideshow
 	{
 		background: url(../images/slide-shadow_700.png) no-repeat center 99.5%;
+		/*[empty]width:;*/
 	}
 	/*home-blocks*/
 	#home-blocks-area .region-home-area-1 .block H2, #home-blocks-area .region-home-area-2 .block H2, #home-blocks-area .region-home-area-3 .block H2
