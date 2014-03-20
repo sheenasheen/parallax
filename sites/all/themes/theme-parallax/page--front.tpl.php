@@ -81,42 +81,54 @@
             <div class="grid_12">
                 <!--banner-->
                 <div id="banner">
+                <header>
+  <div class="content">
+    <hgroup>
+      <h1>Welcome</h1>
+      <h2>Lorem Ipsum Dolor Sed</h2>
+    </hgroup>
+  </div>
+  <div class="overlay"></div>
+</header>
+<section class="site">
+  <a href="http://sallar.me" target="_blank"></a><br><a href="http://sallar.mit-license.org/" target="_blank"></a>
+</section>
                 <?php print render($page['banner']); ?>
                 
                 <?php if (theme_get_setting('slideshow_display','bluemasters')): ?>
 
-                <!--#slideshow-->
+                <!--#slideshow
                 <div id="slideshow">
                 
                 <div class="flexslider">
                 <ul class="slides">
                 
-                <!-- slider-item -->
+                
                 <li class="slider-item">
                 <div class="slider-item-image">
                 <a href="<?php print url('node/3'); ?>"><img src="<?php print base_path() . drupal_get_path('theme', 'bluemasters') . '/images/slide-image-3.jpg'; ?>"></a>
                 </div>
                 <div class="slider-item-caption">About Bluemasters</div>
                 </li>
-                <!-- EOF: slider-item -->
                 
-                <!-- slider-item -->
+                
+               
                 <li class="slider-item">
                 <div class="slider-item-image">
                 <a href="<?php print url('node/2'); ?>"><img src="<?php print base_path() . drupal_get_path('theme', 'bluemasters') . '/images/slide-image-2.jpg'; ?>"></a>
                 </div>
                 <div class="slider-item-caption">Our Portfolio</div>
                 </li>
-                <!-- EOF: slider-item -->
+             
                 
-                <!-- slider-item -->
+               
                 <li class="slider-item">
                 <div class="slider-item-image">
                 <a href="<?php print url('node/1'); ?>"><img src="<?php print base_path() . drupal_get_path('theme', 'bluemasters') . '/images/slide-image-1.jpg'; ?>"></a>
                 </div>
                 <div class="slider-item-caption">Creation of Beaches</div>
                 </li>
-                <!-- EOF: slider-item -->
+                
                 
                 </ul>
                 </div>
@@ -243,7 +255,7 @@
             </div>
 
             <div class="grid_12">
-        	   <div class="credits-container" style="clear:both; padding-top:12px;">Ported to Drupal for the Open Source Community by <a href="http://www.drupalizing.com">Drupalizing</a>, a Project of <a href="http://www.morethanthemes.com">More than Themes</a></div>     
+        	   <div class="credits-container" style="clear:both; padding-top:12px;"></div>     
             </div>
 
         </div>

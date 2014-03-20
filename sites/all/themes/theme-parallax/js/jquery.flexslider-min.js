@@ -41,3 +41,108 @@ f.controlNav.update("remove",a.last);c.directionNav&&f.directionNav.update()};a.
 a.slides.eq(b).remove();a.doMath();a.update(e,"remove");a.slides=d(c.selector+":not(.clone)",a);a.setup();c.removed(a)};f.init()};d.flexslider.defaults={namespace:"flex-",selector:".slides > li",animation:"fade",easing:"swing",direction:"horizontal",reverse:!1,animationLoop:!0,smoothHeight:!1,startAt:0,slideshow:!0,slideshowSpeed:7E3,animationSpeed:600,initDelay:0,randomize:!1,pauseOnAction:!0,pauseOnHover:!1,useCSS:!0,touch:!0,video:!1,controlNav:!0,directionNav:!0,prevText:"Previous",nextText:"Next",
 keyboard:!0,multipleKeyboard:!1,mousewheel:!1,pausePlay:!1,pauseText:"Pause",playText:"Play",controlsContainer:"",manualControls:"",sync:"",asNavFor:"",itemWidth:0,itemMargin:0,minItems:0,maxItems:0,move:0,start:function(){},before:function(){},after:function(){},end:function(){},added:function(){},removed:function(){}};d.fn.flexslider=function(j){void 0===j&&(j={});if("object"===typeof j)return this.each(function(){var a=d(this),c=a.find(j.selector?j.selector:".slides > li");1===c.length?(c.fadeIn(400),
 j.start&&j.start(a)):void 0==a.data("flexslider")&&new d.flexslider(this,j)});var l=d(this).data("flexslider");switch(j){case "play":l.play();break;case "pause":l.pause();break;case "next":l.flexAnimate(l.getTarget("next"),!0);break;case "prev":case "previous":l.flexAnimate(l.getTarget("prev"),!0);break;default:"number"===typeof j&&l.flexAnimate(j,!0)}}})(jQuery);
+
+/**
+ * Created by Sallar Kaboli <sallar.kaboli@gmail.com>
+ * @sallar
+ * 
+ * Released under the MIT License.
+ * http://sallar.mit-license.org/
+ * 
+ * This document demonstrates three things:
+ * 
+ * - Creating a simple parallax effect on the content
+ * - Creating a Medium.com-style blur on scroll image
+ * - Getting scroll position using requestAnimationFrame for better performance
+ */
+
+
+/**
+ * Cache
+ */
+var $content = $('header .content')
+  , $blur    = $('header .overlay')
+  , wHeight  = $(window).height();
+
+$(window).on('resize', function(){
+  wHeight = $(window).height();
+});
+
+/**
+ * requestAnimationFrame Shim 
+ */
+window.requestAnimFrame = (function()
+{
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+/**
+ * Scroller
+ */
+function Scroller()
+{
+  this.latestKnownScrollY = 0;
+  this.ticking            = false;
+}
+
+Scroller.prototype = {
+  /**
+   * Initialize
+   */
+  init: function() {
+    window.addEventListener('scroll', this.onScroll.bind(this), false);
+  },
+
+  /**
+   * Capture Scroll
+   */
+  onScroll: function() {
+    this.latestKnownScrollY = window.scrollY;
+    this.requestTick();
+  },
+
+  /**
+   * Request a Tick
+   */
+  requestTick: function() {
+    if( !this.ticking ) {
+      window.requestAnimFrame(this.update.bind(this));
+    }
+    this.ticking = true;
+  },
+
+  /**
+   * Update.
+   */
+  update: function() {
+    var currentScrollY = this.latestKnownScrollY;
+    this.ticking       = false;
+    
+    /**
+     * Do The Dirty Work Here
+     */
+    var slowScroll = currentScrollY / 4
+      , blurScroll = currentScrollY * 2;
+    
+    $content.css({
+      'transform'         : 'translateY(-' + slowScroll + 'px)',
+      '-moz-transform'    : 'translateY(-' + slowScroll + 'px)',
+      '-webkit-transform' : 'translateY(-' + slowScroll + 'px)'
+    });
+    
+    $blur.css({
+      'opacity' : blurScroll / wHeight
+    });
+  }
+};
+
+/**
+ * Attach!
+ */
+var scroller = new Scroller();  
+scroller.init();
