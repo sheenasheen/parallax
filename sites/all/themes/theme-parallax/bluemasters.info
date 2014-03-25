@@ -10,6 +10,7 @@ stylesheets[all and (max-width: 759px)][] = css/mobile.css
 stylesheets[all][] = css/style.css
 
 ;JS
+scripts[] = js/para_slider.js
 
 regions[custom] = Custom
 

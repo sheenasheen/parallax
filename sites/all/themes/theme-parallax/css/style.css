@@ -1783,7 +1783,7 @@ header{
   overflow: hidden;
   background: url(https://dl.dropboxusercontent.com/u/16657557/scripts/blur/bg.jpg) center no-repeat; /* Image Credit: Unsplash.me */
   background-size: cover;
-  
+}
   .content{
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;

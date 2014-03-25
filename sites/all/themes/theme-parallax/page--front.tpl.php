@@ -1,4 +1,77 @@
 <div id="page">
+    <div id="wrapper">
+        <div id="header" class="clearfix container_12">
+            <div class="grid_5">
+                <!--logo-floater-->
+                <div id="logo-floater"> 
+                    <?php if ($logo): ?>
+                    <a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>">
+                    <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+                    </a>
+                    <?php endif; ?>
+                    
+                    <?php if ($site_name || $site_slogan): ?>
+                    <div class="clearfix">
+                        <?php if ($site_name): ?>
+                        <span id="site-name"><a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a></span>
+                        <?php endif; ?>
+                        
+                        <?php if ($site_slogan): ?>
+                        <span id="slogan"><?php print $site_slogan; ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
+                </div> 
+                <!--EOF:logo-floater-->
+            </div>
+    
+            <div class="grid_7">
+                <!--navigation-->
+                <div id="navigation">
+                    <?php if ($page['navigation']) :?>
+                    <?php print drupal_render($page['navigation']); ?>
+                    <?php else :
+                    if (module_exists('i18n_menu')) {
+                    $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
+                    } else { $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); }
+                    print drupal_render($main_menu_tree);
+                    endif; ?>
+                </div>
+                <!--EOF:navigation-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+<div class="content">
+<hgroup>
+  <h1>Welcome</h1>
+  <h2>Lorem Ipsum Dolor Sed</h2>
+</hgroup>
+  </div>
+  <div class="overlay"></div>
+</header>
+
+    <?php 
+		//var_dump($page['content']['system_main']['nodes']);
+		//die();
+		/*foreach($page['content']['system_main']['nodes'] as $node) {
+			if (is_object($node['#node'])) {
+				if ($node['#node']->type === 'page') {
+					//var_dump($node['#node']);
+					if(property_exists($node['#node']->body['und'][0], 'value')) echo "<div id='front-page-" . $node['#node']->title . "'>" . $node['#node']->body['und'][0]['value'] . "</div>";
+				}
+			}
+		} 
+		die(); */
+	?>
+    
+
+
+<!--
+<div id="page">
+
 
     <!--header-top-->
     <div id="header-top">
@@ -32,48 +105,7 @@
     <div id="wrapper">
     	
         <!--header-->
-        <div id="header" class="clearfix container_12">
-        	
-            <div class="grid_5">
-                <!--logo-floater-->
-                <div id="logo-floater"> 
-        			<?php if ($logo): ?>
-                    <a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>">
-                    <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-                    </a>
-                    <?php endif; ?>
-                    
-                    <?php if ($site_name || $site_slogan): ?>
-                    <div class="clearfix">
-        				<?php if ($site_name): ?>
-                        <span id="site-name"><a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a></span>
-                        <?php endif; ?>
-                        
-                        <?php if ($site_slogan): ?>
-                        <span id="slogan"><?php print $site_slogan; ?></span>
-                        <?php endif; ?>
-                    </div>
-                    <?php endif; ?>
-                </div> 
-                <!--EOF:logo-floater-->
-            </div>
-
-            <div class="grid_7">
-                <!--navigation-->
-                <div id="navigation">
-                    <?php if ($page['navigation']) :?>
-                    <?php print drupal_render($page['navigation']); ?>
-                    <?php else :
-                    if (module_exists('i18n_menu')) {
-                    $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
-                    } else { $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); }
-                    print drupal_render($main_menu_tree);
-                    endif; ?>
-                </div>
-                <!--EOF:navigation-->
-            </div>
-           
-        </div>
+        
         <!--EOF:header-->
 
         <div class="container_12">
@@ -81,22 +113,13 @@
             <div class="grid_12">
                 <!--banner-->
                 <div id="banner">
-                <header>
-  <div class="content">
-    <hgroup>
-      <h1>Welcome</h1>
-      <h2>Lorem Ipsum Dolor Sed</h2>
-    </hgroup>
-  </div>
-  <div class="overlay"></div>
-</header>
 <section class="site">
   <a href="http://sallar.me" target="_blank"></a><br><a href="http://sallar.mit-license.org/" target="_blank"></a>
 </section>
                 <?php print render($page['banner']); ?>
                 
                 <?php if (theme_get_setting('slideshow_display','bluemasters')): ?>
-
+-->
                 <!--#slideshow
                 <div id="slideshow">
                 

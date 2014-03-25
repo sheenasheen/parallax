@@ -22,6 +22,7 @@ function bluemasters_preprocess_html(&$variables) {
 if (theme_get_setting('slideshow_js','bluemasters')):
 
 	drupal_add_js(drupal_get_path('theme', 'bluemasters') . '/js/jquery.flexslider-min.js');
+	drupal_add_js(drupal_get_path('theme', 'bluemasters') . '/js/para_slider.js');
 
 	//Initialize slideshow using theme settings
 	$effect=theme_get_setting('slideshow_effect','bluemasters');
