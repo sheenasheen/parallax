@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<header>
+<header id="section-1">
 <div class="content">
 <hgroup>
   <h1>Welcome</h1>
@@ -52,6 +52,32 @@
   </div>
   <div class="overlay"></div>
 </header>
+<div id='section-2'>
+	<h2>Services</h2>
+    <ul>
+    	<li>
+        	<img src="hashy-tag.png" />
+        	<h4>Coffee</h4>
+            I like coffee.
+        </li>
+        <li>
+        	<img src="hashy-tag.png" />
+        	<h4>Coffee</h4>
+            I like coffee.
+        </li>
+        <li>
+        	<img src="hashy-tag.png" />
+        	<h4>Coffee</h4>
+            I like coffee.
+        </li>
+        <li>
+        	<img src="hashy-tag.png" />
+        	<h4>Coffee</h4>
+            I like coffee.
+        </li>
+    </ul>
+</div>
+
 
     <?php 
 		//var_dump($page['content']['system_main']['nodes']);
