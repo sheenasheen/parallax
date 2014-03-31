@@ -31,8 +31,8 @@ features[] = secondary_menu
 
 scripts[] = js/libs/modernizr-2.6.2-respond-1.1.0.min.js
 scripts[] = js/script.js
-scripts[] = js/plugins.js
-
+scripts[] = js/plugins.js MainImage.js
+scripts[] = js/MainImage.js
 plugins[panels][layouts] = layouts
 
 stylesheets[all][] = css/compiled/style.css
