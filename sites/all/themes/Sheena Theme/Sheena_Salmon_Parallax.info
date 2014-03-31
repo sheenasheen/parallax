@@ -16,6 +16,11 @@ regions[content_bottom] = Content Bottom
 regions[content] = Content
 regions[sidebar_first] = First sidebar
 regions[sidebar_second] = Second sidebar
+regions[column1] = First Column
+regions[column2] = Second Column
+regions[middle] = Middle
+regions[secondcolumn1] = Bottom First Column
+regions[secondcolumn2] = Bottom Second Column
 regions[footer] = Footer
 regions[page_bottom] = Page bottom
 
