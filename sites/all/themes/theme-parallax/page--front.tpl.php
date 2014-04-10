@@ -43,40 +43,6 @@
     </div>
 </div>
 
-<header id="section-1">
-<div class="content">
-<hgroup>
-  <h1>Welcome</h1>
-  <h2>Lorem Ipsum Dolor Sed</h2>
-</hgroup>
-  </div>
-  <div class="overlay"></div>
-</header>
-<div id='section-2'>
-	<h2>Services</h2>
-    <ul>
-    	<li>
-        	<img src="hashy-tag.png" />
-        	<h4>Coffee</h4>
-            I like coffee.
-        </li>
-        <li>
-        	<img src="hashy-tag.png" />
-        	<h4>Coffee</h4>
-            I like coffee.
-        </li>
-        <li>
-        	<img src="hashy-tag.png" />
-        	<h4>Coffee</h4>
-            I like coffee.
-        </li>
-        <li>
-        	<img src="hashy-tag.png" />
-        	<h4>Coffee</h4>
-            I like coffee.
-        </li>
-    </ul>
-</div>
 
 
     <?php 
@@ -139,9 +105,16 @@
             <div class="grid_12">
                 <!--banner-->
                 <div id="banner">
-<section class="site">
-  <a href="http://sallar.me" target="_blank"></a><br><a href="http://sallar.mit-license.org/" target="_blank"></a>
-</section>
+                <div class="slider">
+			<ul class="slides">
+				<li class="slide"><div class="box" style="background-color: #1abc9c;"></div></li>
+				<li class="slide"><div class="box" style="background-color: #16a085;"></div></li>
+				<li class="slide"><div class="box" style="background-color: #f1c40f;"></div></li>
+				<li class="slide"><div class="box" style="background-color: #f39c12;"></div></li>
+				<li class="slide"><div class="box" style="background-color: #d35400;"></div></li>
+				<li class="slide"><div class="box" style="background-color: #c0392b;"></div></li>
+			</ul>
+		</div>
                 <?php print render($page['banner']); ?>
                 
                 <?php if (theme_get_setting('slideshow_display','bluemasters')): ?>
@@ -197,6 +170,7 @@
           
             <div class="grid_12">
              <div id="parallax-bottom">
+             <?php print render($page['parallax-bottom']);?> 		
         
         <div id="footer-bottom-inside" class="clearfix container_12">
 
@@ -214,7 +188,7 @@
                     </div>
                     <?php endif; ?>
 
-                    <div class="grid_4 alpha">
+                    <div class="grid_3 alpha">
                         <div class="column-fix">
                             <div class="home-block-area first">
                                 <?php print render($page['home_area_1']);?> 		
@@ -222,15 +196,15 @@
                         </div>
                     </div>
 
-                    <div class="grid_4 alpha omega">
+                    <div class="grid_3 alpha omega">
                         <div class="column-fix">
                             <div class="home-block-area">
                                 <?php print render($page['home_area_2']);?> 
                             </div>
                         </div>
                     </div>
-
-                    <div class="grid_4 omega">
+                    
+                    <div class="grid_3 omega">
                         <div class="column-fix">
                             <div class="home-block-area last">
                                 <?php print render($page['home_area_3']);?> 
@@ -239,7 +213,30 @@
                         </div>
                     </div>
 
+                    <div class="grid_3 omega">
+                        <div class="column-fix">
+                            <div class="home-block-area last">
+                                <?php print render($page['home_area_4']);?> 
+                                <?php print render($page['home_area_3_b']);?> 
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+                
+        <div class="container_12">
+          
+            <div class="grid_12">
+             <div id="thumbnails-1">
+             <?php print render($page['thumbnails-1']);?> 		
+        
+        <div id="footer-bottom-inside" class="clearfix container_12">
+
+            <div class="grid_12">
+        	       
+            </div>
+
+        </div>
                 <!--EOF:home-block-area-->
             </div>    
 

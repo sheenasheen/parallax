@@ -1,5 +1,6 @@
 <div id="page" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 <!-- ______________________ HEADER _______________________ -->
+
   <header id="header">
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
@@ -39,7 +40,25 @@
           </div>
         <?php endif; ?>
       </nav>
-    <?php endif; ?>
+    <?php endif; ?><div class="container demo-2">
+			<header class="codrops-header">
+				<div class="codrops-top clearfix">
+				</div>
+				<h1>Item Transition Inspiration</h1>	
+			</header>
+			<section>
+				<div id="component" class="component component-fullwidth">
+					<ul class="itemwrap">
+						<li class="current"><img src="/img/6.jpg" alt="img06"/></li>
+						<li><img src="/img/7.jpg" alt="img07"/></li>
+						<li><img src="/img/8.jpg" alt="img08"/></li>
+					</ul>
+					<nav>
+						<a class="prev" href="#">Previous item</a>
+						<a class="next" href="#">Next item</a>
+					</nav>
+				</div>
+			</section>
   </header> <!-- /header -->
  
   <div id="main" class="clearfix" role="main">
@@ -67,7 +86,7 @@
             <?php endif; ?>
           </div> <!-- /#content-header -->
         <?php endif; ?>
-        <div id="content-area">
+        <div id="content-Sutro-area-wrapper" class="wrapper">
           <?php print render($page['content']) ?>
         </div>
           <div class="sutro-double-container sutro-double-column-content sutro-double-first-column-content clearfix">
@@ -101,6 +120,7 @@
       </div>
     </div>
   </div>
+ </div>
         <?php print $feed_icons; ?>
         <?php if ($page['content_bottom']): ?>
               <div id="content_bottom"><?php print render($page['content_bottom']) ?></div>
