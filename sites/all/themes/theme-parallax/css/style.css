@@ -31,11 +31,25 @@
 BODY, DIV, SPAN, P, A, IMG, UL, OL, LI, TABLE, TH, TR, TD, FORM, FIELDSET, LEGEND, DL, DT, DD, BLOCKQUOTE, APPLET, OBJECT
 {
 	border: 0;
+	font-weight: bold;
+}
+#home-blocks-area2 .region-home-area-1 .content
+{
+	color: #FFFFFF;
 }
 #home-blocks-area P
 {
 	color: #FFF;
 	align-content: center;
+}
+DIV.grid_3.omega
+{
+	/*+placement:margin-auto 0px 0px;*/
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	left: 0px;
+	top: 0px;
 }
 BODY
 {
@@ -114,6 +128,10 @@ H1.title
 P
 {
 	margin: 0 0 10px;
+}
+DIV.region.region-home-area-1 P
+{
+	color: #FFFFFF;
 }
 BLOCKQUOTE
 {
@@ -211,8 +229,8 @@ HTML[xmlns] .clearfix
 #wrapper
 {
 	margin: 0 auto;
-	text-align: left;
-	padding: 0 0 20px;
+	text-align: center;
+	padding: 0;
 }
 #header
 {
@@ -356,8 +374,22 @@ HTML[xmlns] .clearfix
 	background: #47A085;
 	min-height: 100px;
 	overflow: hidden;
-	margin: 0% 10% 0% 12%;
 	clear: none;
+}
+#home-blocks-area2.clearfix
+{
+	background: #16A085;
+	max-height: 100%;
+	margin: auto;
+	width: 960px;
+	color: #FFFFFF;
+	box-shadow: 0px 0px;
+}
+.container_12-home-blocks-area-bg-green
+{
+	background-color: #16A085;
+	margin: 0 0 20px;
+	box-shadow: 0px 2px 5px 2px #D5D4D4;
 }
 /*Example overrides*/
 .home-block-area
@@ -447,12 +479,27 @@ HTML[xmlns] .clearfix
 }
 #parallax-bottom
 {
-	background-color: #47A085;
-	/*[empty]padding:;*/
+	width: 960px;
+	margin: 0 auto;
+}
+.container_12-parallax
+{
+	background: #F15353;
+}
+.container_12-thumb
+{
+	background: #FFF;
+}
+#Thumbnails-area
+{
+	background: #FFFFFF;
+	margin: 0 auto;
 }
 #thumbnails-1
 {
-	background: #FFFFFF;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	width: 960px;
 }
 .ico
 {
@@ -474,11 +521,10 @@ HTML[xmlns] .clearfix
 #footer
 {
 	clear: both;
+	/*[empty]background:;*/
 	margin: 0 auto;
 	text-align: center;
 	display: block;
-	background-color: #0F131F;
-	border-bottom: 1px solid #040507;
 	min-height: 100px;
 }
 #footer-inside
@@ -1650,8 +1696,6 @@ top header*/
 	/*footer secondary menu*/
 	#footer-bottom-inside, #footer-bottom-inside-right UL#secondary-menu, #footer-bottom-inside-right UL.menu
 	{
-		text-align: center;
-		background: url(images/slide-image-1.jpg);
 	}
 	#footer-bottom-inside-right UL#secondary-menu LI, #footer-bottom-inside-right UL.menu LI
 	{
@@ -1921,66 +1965,93 @@ main navigation*/
 	-moz-animation: spinAround 2s linear infinite;
 	animation: spinAround 2s linear infinite;
 }
-.slider
+.cbp-fwslider
 {
 	position: relative;
-	width: 100%;
-	height: 420px;
+	margin: 0 0 10px;
 	overflow: hidden;
+	padding: 40px 0 60px;
 }
-.slides
+.cbp-fwslider UL
 {
-	height: 100%;
-	/*Clear fix*/
-	@include clearfix(); -webkit-backface-visibility: hidden;
-	-webkit-transform-style: preserve-3d;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+	list-style-type: none;
 }
-.slide
+.cbp-fwslider UL LI
 {
-	height: 100%;
+	transform: translateZ(0);
 	float: left;
-	clear: none;
+	display: block;
+	margin: 0;
+	padding: 0;
 }
-.slider-arrows
+.cbp-fwslider UL LI > A, .cbp-fwslider UL LI > DIV
 {
+	display: block;
+	text-align: center;
+	outline: none;
 }
-.slider-arrow
+.cbp-fwslider UL LI > A IMG
+{
+	border: none;
+	display: block;
+	margin: 0 auto;
+	max-width: 75%;
+}
+.cbp-fwslider NAV SPAN
 {
 	position: absolute;
-	display: block;
-	margin-bottom: -20px;
-	padding: 20px;
+	top: 50%;
+	width: 50px;
+	height: 100px;
+	background: #47A3DA;
+	color: #FFF;
+	font-size: 50px;
+	text-align: center;
+	margin-top: -50px;
+	line-height: 100px;
+	cursor: pointer;
+	font-weight: normal;
 }
-.slider-arrow--right
+.cbp-fwslider NAV SPAN:hover
 {
-	bottom: 50%;
-	right: 30px;
+	background: #378FC3;
 }
-.slider-arrow--left
+.cbp-fwslider NAV SPAN.cbp-fwnext
 {
-	bottom: 50%;
-	left: 30px;
+	right: 0px;
 }
-.slider-nav
+.cbp-fwslider NAV SPAN.cbp-fwprev
+{
+	left: 0px;
+}
+.cbp-fwdots
 {
 	position: absolute;
-	bottom: 30px;
+	bottom: 0px;
+	white-space: nowrap;
+	text-align: center;
+	width: 100%;
 }
-.slider-nav__item
+.cbp-fwdots SPAN
 {
-	width: 12px;
-	height: 12px;
-	float: left;
-	clear: none;
-	display: block;
-	margin: 0 5px;
-	background: #FFF;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background: #DDD;
+	margin: 4px;
+	border-radius: 50%;
+	cursor: pointer;
 }
-.slider-nav__item:hover
+.cbp-fwdots SPAN:hover
 {
-	background: #CCC;
+	background: #999;
 }
-.slider-nav__item--current
+.cbp-fwdots SPAN.cbp-fwcurrent
 {
-	background: #CCC;
+	background: #47A3DA;
+	box-shadow: 0 0 0 2px #47A3DA;
+	transition: box-shadow 0.2s ease-in-out;
 }

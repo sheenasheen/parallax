@@ -1,0 +1,9 @@
+name = Parallax Block
+description = Provides toggle to enable parallax background effect for all blocks.
+core = 7.x
+
+stylesheets[all][] = parallax_block.css
+
+scripts[] = parallax_block.js
+
+dependencies[] = block

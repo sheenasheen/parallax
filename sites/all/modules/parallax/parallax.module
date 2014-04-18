@@ -1,0 +1,313 @@
+<?php
+
+/**
+ * @file
+ * A module to provide simple Parallax blocks using the Parallax Search API.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function parallax_help($path, $arg) {
+    switch ($path) {
+        case 'admin/structure/block/add-parallax-block':
+            return '<p>' . t('Use this page to create a new custom parallax block.') . '</p>';
+    }
+}
+
+/**
+ * implements hook_init().
+ */
+
+function parallax_init(){
+    drupal_add_js(drupal_get_path('module', 'parallax'). '/js/jquery.min1.6.0.js');
+    drupal_add_js(drupal_get_path('module', 'parallax'). '/js/parallax.js');
+   
+}
+
+/**
+ * Implements hook_menu().
+ */
+function parallax_menu() {
+    // Create an array of block settings
+    $settings = array(
+        'title' => 'Add Parallax block',
+        'description' => 'Add a new Parallax block.',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('parallax_add_block_form'),
+        'type' => MENU_LOCAL_ACTION,
+        'file' => 'parallax.admin.inc',
+    );
+
+    // Add a local action to the block configuration page
+    $items['admin/structure/block/add-parallax-block'] = array(
+        'access arguments' => array('administer blocks'),
+            ) + $settings;
+
+    // Get the default site theme
+    $default_theme = variable_get('theme_default', 'bartik');
+
+    // Add a local action to the per-theme block configuration pages
+    foreach (list_themes() as $key => $theme) {
+        if ($key != $default_theme) {
+            $items['admin/structure/block/list/' . $key . '/add-parallax-block'] = array(
+                'access callback' => '_parallax_themes_access',
+                'access arguments' => array($theme),
+                    ) + $settings;
+        }
+    }
+
+    $items['admin/structure/block/administer/parallax/%/delete'] = array(
+        'title' => 'Delete Parallax block',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('parallax_delete', 5),
+        'access arguments' => array('administer blocks'),
+        'type' => MENU_CALLBACK,
+        'file' => 'parallax.admin.inc',
+    );
+    return $items;
+}
+
+/**
+ * Menu item access callback - only admin or enabled themes can be accessed.
+ */
+function _parallax_themes_access($theme) {
+    return user_access('administer blocks') && drupal_theme_access($theme);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter();
+ */
+function parallax_form_block_admin_display_form_alter(&$form, &$form_state, $form_id) {
+    $result = db_query('SELECT bid FROM {parallax}');
+
+    // Add delete links to Parallax Block blocks
+    foreach ($result as $block) {
+        $form['blocks']['parallax_' . $block->bid]['delete'] = array(
+            '#type' => 'link',
+            '#title' => t('delete'),
+            '#href' => 'admin/structure/block/administer/parallax/' . $block->bid . '/delete',
+        );
+    }
+}
+
+/**
+ * 
+ * @param type $bid
+ * @return
+ */
+function parallax_block_get($bid) {
+    return db_query("SELECT * FROM {parallax} WHERE bid = :bid", array(':bid' => $bid))->fetchAssoc();
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function parallax_block_info() {
+    $blocks = array();
+
+    $result = db_query('SELECT bid, info FROM {parallax} ORDER BY info');
+    foreach ($result as $block) {
+        $blocks[$block->bid]['info'] = $block->info;
+    }
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function parallax_block_configure($delta = 0) {
+    if ($delta) {
+        $config = parallax_block_get($delta);
+
+        // Unserialize the timeline settings.
+        $data = unserialize($config['data']);
+
+        // Remove the serialized timeline settings.
+        unset($config['data']);
+
+        // Add the timeline settings to the block settings.
+       // $parallax = $config + $data;
+    } else {
+        $parallax = array();
+    }
+    return parallax_custom_block_form($parallax);
+}
+
+/**
+ * Form constructor for the Parallax block form.
+ *
+ * @param $edit
+ *   (optional) An associative array of information retrieved by
+ *   parallax_block_get() if an existing block is being edited, or an
+ *   empty array otherwise. Defaults to array().
+ *
+ * @ingroup forms
+ */
+function parallax_custom_block_form($edit = array()) {
+   /* $edit += array(
+        'info' => '',
+       'theme' => '',
+        'image' => '',
+        'width' => '',
+        'height' => '',
+        'content' => '',
+    ); */
+
+    $form['info'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Block description'),
+        '#default_value' => $edit['info'],
+        '#maxlength' => 64,
+        '#description' => t('A brief description of your block. Used on the <a href="@overview">Blocks administration page</a>.', array('@overview' => url('admin/structure/block'))),
+        '#required' => TRUE,
+    );
+    $form['image'] = array(
+        '#type' => 'managed_file',
+        '#title' => t('Parallax Image'),
+        '#default_value' => $edit['content'],
+        '#required' => TRUE,
+        '#description' => t('Parallax Image upload the parallax images as max of size which sould looks good'),
+    );
+    $form['content'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Content'),
+        '#default_value' => $edit['content'],
+        '#required' => TRUE,
+        '#description' => t('Content will be visible over the parallax image'),
+    );
+
+    $form['size'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Size'),
+        '#description' => t('Parallax size to define height and width of parallax effect on front end'),
+    );
+    $form['size']['width'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Width'),
+        '#default_value' => $edit['width'],
+        '#size' => 6,
+        '#field_suffix' => 'px',
+        '#description' => t('Change the width of the parallax.'),
+    );
+    $form['size']['height'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Height'),
+        '#default_value' => $edit['height'],
+        '#size' => 6,
+        '#field_suffix' => 'px',
+        '#description' => t('Change the height of the parallax.'),
+    );
+    $form['size']['note'] = array(
+        '#type' => 'markup',
+        '#markup' => '<p>' . t('The minimum width of a timeline is 180px and the maximum is 520px. The minimum height is 200px.') . '</p>',
+    );
+    return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function parallax_block_save($delta = 0, $edit = array()) {
+    parallax_custom_block_save($edit, $delta);
+}
+
+/*
+ * Cusrom block save function
+ */
+function parallax_custom_block_save($edit, $delta) {
+    // The serialized 'data' column contains the timeline settings.
+    $data = array(
+        'theme' => $edit['theme'],
+        'image' => $edit['image'],
+        'width' => $edit['width'],
+        'height' => $edit['height'],
+        'content' => $edit['content'],
+    );
+
+
+    // Save the block configuration
+    $delta = db_update('parallax')
+            ->fields(array(
+                'info' => $edit['info'],
+                'image' => $edit['image'],
+                'data' => $edit['content'],
+            ))
+            ->condition('bid', $delta)
+            ->execute();
+
+    return TRUE;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+  function parallax_block_view($delta) {
+      
+  
+    // Load the configuration.
+    $config = parallax_block_get($delta);
+   // print '<pre>'; print_r($config);
+    $block = array();
+    $block['subject'] = t($config['info']);
+    $block['content'] = parallax_get_view($config);
+    return $block;
+}
+
+/*
+ * Parallax structure preparation
+ */
+        
+function parallax_get_view($data) {
+    $parallax_delta = "parallax_".$data['bid'];
+    $output = '';
+    $output .='<script type="text/javascript">
+   
+(function ($) {
+     
+    $(document).ready(function() {
+ $("#'.$parallax_delta.'").parallax("50%", 0.2);
+ 
+  
+    });
+})(jQuery);
+</script>'; 
+   /*$parallax_width = $data['width'];
+    $parallax_height = $data['height'];
+    $parallax_image_src = $data['image']; */
+    $parallax_width = '600';
+    $parallax_height = '300';
+    $parallax_image_src = $data['image'];
+    global $base_url;
+    
+    
+    $height_parallax = '400px';
+      
+  // $img_uri = explode('public://', $node_data->{$field_name_arr['parallax_img']}['und']['0']['uri']);
+   //   $img_uri_arr = end($img_uri);
+      $img_uri_arr = 'field/image/qqqqqq.jpg';
+   $output .='<style>';
+   $output .='#'.$parallax_delta. '{';
+   $output .='background: url("'.$base_url.'/sites/ssopoclocal.com/files/'.$img_uri_arr.'") 50% 0;
+	margin: 0 auto;
+        background-attachment: fixed;
+	padding: 0;
+        background-repeat: no-repeat;
+        width:1000px;
+        height:'.$height_parallax;
+   $output .='}';
+   $output .='</style>';
+   $output .='<div id="'.$parallax_delta.'" class="parallax '.$parallax_delta.'">';
+   $output .='<p>This is test This is test This is test This is test This is test This is test This is test This is test This is test This is test This is test This is test This is test 
+       <h1>Title for testing</h1></p>';
+   $output .='<p>This is test <h1>Title for testing</h1></p>';
+   $output .='<p>This is test <h1>Title for testing</h1></p>';
+   $output .='<p>This is test This is test This is test This is test This is test This is test This is test This is test <h1>Title for testing</h1></p>';
+ //  $output .='<a href="'.$node_data->{$field_name_arr['ad_link']}['und']['0']['value'].'" target="_blank"></a>';
+   $output .='</div>';
+  
+  // print $output;
+  // die;
+   return $output;
+    
+}  

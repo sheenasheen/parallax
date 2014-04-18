@@ -57,6 +57,7 @@ BODY
 .container_12 .grid_3
 {
 	width: 220px;
+	margin: 0 0 0 50px;
 }
 .container_12 .grid_4
 {
@@ -93,6 +94,7 @@ BODY
 .container_12 .grid_12
 {
 	width: 100%;
+	margin: 0 auto;
 }
 /*`Prefix Extra Space >> 12 Columns
 ----------------------------------------------------------------------------------------------------*/

@@ -10,13 +10,29 @@ stylesheets[all and (max-width: 759px)][] = css/mobile.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/Icons.css
 stylesheets[all][] = css/thumb-grid.css
+stylesheets[all][] = css/contact-form.css
+stylesheets[all][] = css/slider.css
+stylesheets[all][] = css/normalize.css
+
+stylesheets[all][] = css/examples.css
+
+
 
 
 ;JS
-scripts[] = js/para_slider.js
-scripts[] = js/icons.js
-scripts[] = js/thumb-grid.js
-scripts[] = js/jquery.glide.js
+;-scripts[] = js/para_slider.js
+;scripts[] = js/icons.js
+;scripts[] = js/fixed-nav.js
+;scripts[] = js/thumb-grid.js
+;-scripts[] = js/jquery.cbpFWSlider
+;-scripts[] = js/jquery.cbpFWSlider.min
+;scripts[] = js/_dependent/greensock/TweenMax.min.js
+;scripts[] = js/_dependent/greensock/plugins/ScrollToPlugin.min.js
+;scripts[] = js/_dependent/jquery-1.11.0.min.js
+;scripts[] = js/_examples/modernizr.custom.min.js
+;scripts[] = js/_mobile/iscroll.js
+;sscripts[] = js/jquery.scrollmagic.min.js
+
 regions[custom] = Custom
 
 regions[header] = Header
@@ -25,14 +41,16 @@ regions[navigation] = Navigation
 regions[highlighted] = Highlighted
 regions[content] = Content
 regions[sidebar_first] = Sidebar First
+regions[slider] = slider
 regions[banner] = Banner
-regions[parallax-bottom] = parallax bottom
+regions[parallax-section] = parallax section
 regions[home_area_1] = Home area 1
 regions[home_area_2] = Home area 2
 regions[home_area_3] = Home area 3
 regions[home_area_3_b] = Home area 3 b
 regions[home_area_4] = Home area 4
 regions[thumbnails-1] = thumbnails 1
+regions[blue-area-inside] = blue area inside
 regions[footer_left_1] = Footer left 1
 regions[footer_left_2] = Footer left 2
 regions[footer_center] = Footer center
@@ -42,6 +60,7 @@ regions[footer_bottom] = Footer Bottom
 regions[help] = Help
 regions[page_top] = Page top
 regions[page_bottom] = Page bottom
+regions[parallax-bottom] = parallax bottom
 
 settings[responsive_respond]= 0
 settings[responsive_meta]= 1
@@ -64,4 +83,5 @@ version = "7.x-2.0"
 core = "7.x"
 project = "bluemasters"
 datestamp = "1369232413"
+
 

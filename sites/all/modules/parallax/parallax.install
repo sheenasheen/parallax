@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the parallax module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function parallax_schema() {
+  $schema['parallax'] = array(
+    'description' => 'The table for storing parallax blocks.',
+    'fields' => array(
+      'bid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => "The block's {block}.bid.",
+      ),
+      'info' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Block description.',
+      ),
+      'image' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Image FID',
+      ),
+      'data' => array(
+        'type' => 'blob',
+        'size' => 'big',
+        'not null' => TRUE,
+        'serialize' => TRUE,
+        'description' => 'Content over the parallax.',
+      ),
+    ),
+  
+    'primary key' => array('bid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function parallax_uninstall() {
+  // Remove blocks
+  db_delete('block')
+    ->condition('module', 'parallax')
+    ->execute();
+  db_delete('block_role')
+    ->condition('module', 'parallax')
+    ->execute();
+
+  // Clear the site cache
+  cache_clear_all();
+}
+
+/**
+ * Remove any old Twitter Block blocks and install the new Twitter Block schema.
+ */
+function parallax_update_7200() {
+  // Remove old Twitter Block schema
+  drupal_uninstall_schema('parallax');
+
+  // Remove any old parallax Block blocks
+  db_delete('block')
+    ->condition('module', 'parallax')
+    ->execute();
+  db_delete('block_role')
+    ->condition('module', 'parallax')
+    ->execute();
+
+  // Clear the site cache
+  cache_clear_all();
+
+  // Install the new Twitter Block schema
+  drupal_install_schema('parallax');
+
+  return t('Removed any old parallax settings blocks and installed the new parallax block.');
+}

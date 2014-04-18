@@ -1,6 +1,8 @@
 <div id="page">
     <div id="wrapper">
         <div id="header" class="clearfix container_12">
+        <div class="cbp-af-header">
+    	<div class="cbp-af-inner">
             <div class="grid_5">
                 <!--logo-floater-->
                 <div id="logo-floater"> 
@@ -41,6 +43,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 
@@ -100,25 +104,52 @@
         
         <!--EOF:header-->
 
-        <div class="container_12">
-            
+        <div class="container_12-slider">
+          
             <div class="grid_12">
-                <!--banner-->
-                <div id="banner">
-                <div class="slider">
-			<ul class="slides">
-				<li class="slide"><div class="box" style="background-color: #1abc9c;"></div></li>
-				<li class="slide"><div class="box" style="background-color: #16a085;"></div></li>
-				<li class="slide"><div class="box" style="background-color: #f1c40f;"></div></li>
-				<li class="slide"><div class="box" style="background-color: #f39c12;"></div></li>
-				<li class="slide"><div class="box" style="background-color: #d35400;"></div></li>
-				<li class="slide"><div class="box" style="background-color: #c0392b;"></div></li>
-			</ul>
-		</div>
-                <?php print render($page['banner']); ?>
+            <div id="slider">
+            <?php print render($page['slider']); ?>
+            
+           
+            <div class="gallery autoplay items-3">
+  <div id="item-1" class="control-operator"></div>
+  <div id="item-2" class="control-operator"></div>
+  <div id="item-3" class="control-operator"></div>
+
+  <figure class="item">
+  <br/><br />
+    <h1>1</h1>
+  </figure>
+
+  <figure class="item">
+   <br/><br />
+    <h1>2</h1>
+  </figure>
+
+  <figure class="item">
+   <br/><br />
+    <h1>3</h1>
+  </figure>
+
+  <div class="controls">
+    <a href="#item-1" class="control-button">•</a>
+    <a href="#item-2" class="control-button">•</a>
+    <a href="#item-3" class="control-button">•</a>
+    
+  </div>
+</div>
+</div>
+            
+            </div>
+            </div>
+            </div>
+            
+                <!--banner
                 
-                <?php if (theme_get_setting('slideshow_display','bluemasters')): ?>
--->
+<?php /*?>                <?php print render($page['banner']); ?>
+                
+                <?php if (theme_get_setting('slideshow_display','bluemasters')): ?> -->
+<?php */?>
                 <!--#slideshow
                 <div id="slideshow">
                 
@@ -158,29 +189,32 @@
                 </div>
                 <!--EOF:#slideshow-->
 
-                <?php endif; ?>
+               <?php /*?> <?php endif; ?><?php */?>
 
                 </div>
                 <!--EOF:banner-->
             </div>    
 
         </div>
-
+<!--div id="wrapper">
         <div class="container_12">
           
             <div class="grid_12">
              <div id="parallax-bottom">
-             <?php print render($page['parallax-bottom']);?> 		
-        
+             <?php print render($page['parallax-bottom']);?> 	        
         <div id="footer-bottom-inside" class="clearfix container_12">
 
             <div class="grid_12">
         	       
             </div>
+            </div>
 
-        </div>
+        </div> -->
                 <!--home-block-area-->
-                <div id="home-blocks-area" class="clearfix">
+               <div id="wrapper">
+                <div class="container_12-home-blocks-area-bg-green">
+                <div id="home-blocks-area2" class="clearfix">
+               
                 
             		<?php if ($messages): ?>
                     <div class="clearfix">
@@ -204,11 +238,11 @@
                         </div>
                     </div>
                     
-                    <div class="grid_3 omega">
+                    <div class="grid_3 alpha omega">
                         <div class="column-fix">
                             <div class="home-block-area last">
                                 <?php print render($page['home_area_3']);?> 
-                                <?php print render($page['home_area_3_b']);?> 
+                               
                             </div>
                         </div>
                     </div>
@@ -217,18 +251,28 @@
                         <div class="column-fix">
                             <div class="home-block-area last">
                                 <?php print render($page['home_area_4']);?> 
-                                <?php print render($page['home_area_3_b']);?> 
+                                
                             </div>
                         </div>
                     </div>
-
+</div>
                 </div>
+                </div>
+                 
                 
-        <div class="container_12">
-          
-            <div class="grid_12">
+                        
+        <div id="wrapper">
+        <div class="container_12-thumb">
+       <div id="Thumbnails-area" class="clearfix">
+             <div class="grid_12">
              <div id="thumbnails-1">
-             <?php print render($page['thumbnails-1']);?> 		
+             <?php print render($page['thumbnails-1']);?> 
+             		
+             
+             <div class="container_12">
+          	<div class="grid_12">
+             <div id="parallax-section">
+             <?php print render($page['parallax-section']);?> 		
         
         <div id="footer-bottom-inside" class="clearfix container_12">
 
@@ -243,10 +287,29 @@
         </div>
 
     </div>
+    </div>
+     <div class="container_12">
+            <div class="grid_12">
+                <div id="blue-area" class="clearfix">
+                
+                    <div id="blue-area-inside" class="clearfix">
+                    
+        
+                        
+                        <div class="grid_12 alpha omega">    
+                       
+
+                            <div id="main"  class="inside clearfix">
+                                
+                                
+                            </div>
+                            
+                        </div>
     <!--EOF:wrapper-->
 
     <!--footer-->
     <div id="footer">
+    
         <div id="footer-inside" class="clearfix container_12">
             
             <div class="grid_4">
@@ -281,7 +344,41 @@
     <!--EOF:footer-->
 
     <!--footer-bottom-->
-    <div id="footer-bottom">
+    <div id="footer-bottom"> <script>
+	var controller;
+	$(document).ready(function($) {
+		// init controller
+		controller = new ScrollMagic({vertical: true});
+	});
+</script>
+ 
+<div id="parallaxText">
+	<h1 class="layer1">PARALLAX</h1>
+	<h1 class="layer2">PARALLAX</h1>
+	<h1 class="layer3">
+		PARALLAX
+		
+	</h1>
+	
+</div>
+<script>
+	$(document).ready(function($) {
+		// build tween
+		var tween = new TimelineMax ()
+			.add([
+				TweenMax.fromTo("#parallaxText .layer1", 1, {scale: 3, autoAlpha: 0.05, left: 300}, {left: -350, ease: Linear.easeNone}),
+				TweenMax.fromTo("#parallaxText .layer2", 1, {scale: 2, autoAlpha: 0.3, left: 150}, {left: -175, ease: Linear.easeNone})
+			]);
+
+		// build scene
+		var scene = new ScrollScene({triggerElement: "#trigger2", duration: $(window).width()})
+						.setTween(tween)
+						.addTo(controller);
+
+		// show indicators (requires debug extension)
+		scene.addIndicators();
+	});
+</script>
         
         <div id="footer-bottom-inside" class="clearfix container_12">
 
@@ -305,13 +402,20 @@
             </div>
 
         </div>
-
+        <div id="wrapper">
+        <div class="container_12-parallax">
+       
+          
+            <div class="grid_12">
+             <div id="parallax-bottom">
+             <?php print render($page['parallax-bottom']);?> 	
+           
         <div class="container_12">
+        
 
             <div class="grid_12">
                 <div class="credits-container clearfix">
-                    <a title="Brought To You By: www.SmashingMagazine.com" class="smashing" href="http://www.smashingmagazine.com" target="_blank">Brought to you By: www.SmashingMagazine.com</a>
-                    <a title="Drupalizing" class="drupalizing" href="http://www.drupalizing.com" target="_blank">Drupalizing</a> 
+                    
                 </div>
             </div>
 

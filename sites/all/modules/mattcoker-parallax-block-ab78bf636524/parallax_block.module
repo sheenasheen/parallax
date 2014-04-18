@@ -1,0 +1,206 @@
+<?php
+
+/**
+ * @file
+ * Enable Parallax effect for any block created by the user
+ *
+ * This module enables the user to select none, Same, or Opposite directions
+ * when creating a block. Selecting Same or Opposite places a data attribute
+ * which is ready by the attached javascript file, and then targeted for
+ * calculations causing parallax effect based on 'same' or 'opposite' value.
+ */
+
+function parallax_block_preprocess_html(&$variables) {
+  drupal_add_css(drupal_get_path('module', 'parallax_block') . '/parallax_block.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+}
+
+/**
+ * Implements theme_preprocess_block().
+ */
+function parallax_block_preprocess_block(&$vars) {
+  $block = $vars['block'];
+  if (($block->vertical_parallax_value != "none") || ($block->horizontal_parallax_value != "none")) {
+    $vars['attributes_array'] = array('data-parallax' => $block->vertical_parallax_value . " " . $block->horizontal_parallax_value);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function parallax_block_form_alter(&$form, &$form_state, $form_id) {
+  if (($form_id == 'block_admin_configure') || ($form_id == 'block_add_block_form')) {
+    $block = block_load($form['module']['#value'], $form['delta']['#value']);
+
+    $options_size = array(
+      'none' => 'None',
+      'cover' => 'Cover',
+      'contain' => 'Contain',
+    );
+
+    $options_vertical = array(
+      'none' => 'None',
+      'same' => 'Same Direction (fast effect)',
+      'opposite' => 'Opposite Direction (slow effect)',
+    );
+
+    $options_horizontal = array(
+      'none' => 'None',
+      'ltr' => 'Move to left on scroll',
+      'rtl' => 'Move to right on scroll',
+    );
+
+    $form['settings']['parallax'] = array (
+      '#type' => 'fieldset',
+      '#title' => t('Parallax Settings'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+
+    $form['settings']['parallax']['background_size'] = array(
+      '#title' => t('Background Size'),
+      '#type' => 'radios',
+      '#options' => $options_size,
+      '#default_value' => isset($block->background_size) ? $block->background_size : "cover",
+    );
+
+    $form['settings']['parallax']['vertical_parallax_value'] = array(
+      '#title' => t('Vertical Parallax Direction'),
+      '#type' => 'select',
+      '#options' => $options_vertical,
+      '#default_value' => isset($block->vertical_parallax_value) ? $block->vertical_parallax_value : 'none',
+      '#description' => t('Enable this if you want the background of the uppermost div of this block to be parallaxed vertically.'),
+      '#states' => array('visible' => array(':input[name="background_size"]' => array('value' => 'cover'),),),
+    );
+
+    $form['settings']['parallax']['horizontal_parallax_value'] = array(
+      '#title' => t('Horizontal Parallax Direction'),
+      '#type' => 'select',
+      '#options' => $options_horizontal,
+      '#default_value' => isset($block->horizontal_parallax_value) ? $block->horizontal_parallax_value : 'none',
+      '#description' => t('Enable this if you want the background of the uppermost div of this block to be parallaxed horizontally.'),
+      '#states' => array('visible' => array(':input[name="background_size"]' => array('value' => 'contain'),),),
+    );
+
+    $form['settings']['parallax']['parallax_image'] = array(
+      '#title' => t("Parallax Image"),
+      '#type' => 'managed_file',
+      '#description' => t("Upload the file you would like to parallax. Otherwise, this can be set in your theme's CSS files."),
+      '#default_value' => variable_get('parallax_image', ''),
+      '#upload_location' => 'public://parallax_block/',
+      '#states' => array('visible' => array(':input[name="background_size"]' => array(array('value' => 'contain'),array('value' => 'cover')),),),
+      '#upload_validators' => array('file_validate_extensions' => array('gif png jpg jpeg'),),
+    );
+
+    $form['#submit'][] = 'parallax_block_form_submit';
+  }
+}
+
+/**
+ * Helper function: additional submit callback for block configuration pages.
+ */
+function parallax_block_form_submit($form, &$form_state) {
+  if ($form_state['values']['form_id'] == 'block_admin_configure' || $form_state['values']['form_id'] == 'block_add_block_form') {
+    // Only save if value has changed
+    if (isset($form_state['values']['background_size']) && $form['settings']['parallax']['background_size']['#default_value'] != $form_state['values']['background_size'] && user_access('administer blocks')) {
+      db_update('block')
+        ->fields(array('background_size' => $form_state['values']['background_size']))
+        ->condition('module', $form_state['values']['module'])
+        ->condition('delta', $form_state['values']['delta'])
+        ->execute();
+
+      if (module_exists('context')) {
+        cache_clear_all('context', 'cache', TRUE);
+      }
+    }
+  }
+
+  if ($form_state['values']['form_id'] == 'block_admin_configure' || $form_state['values']['form_id'] == 'block_add_block_form') {
+    // Only save if value has changed
+    if (isset($form_state['values']['vertical_parallax_value']) && $form['settings']['parallax']['vertical_parallax_value']['#default_value'] != $form_state['values']['vertical_parallax_value'] && user_access('administer blocks')) {
+      db_update('block')
+        ->fields(array('vertical_parallax_value' => $form_state['values']['vertical_parallax_value']))
+        ->condition('module', $form_state['values']['module'])
+        ->condition('delta', $form_state['values']['delta'])
+        ->execute();
+
+      if (module_exists('context')) {
+        cache_clear_all('context', 'cache', TRUE);
+      }
+    }
+  }
+
+  if ($form_state['values']['form_id'] == 'block_admin_configure' || $form_state['values']['form_id'] == 'block_add_block_form') {
+    // Only save if value has changed
+    if (isset($form_state['values']['horizontal_parallax_value']) && $form['settings']['parallax']['horizontal_parallax_value']['#default_value'] != $form_state['values']['horizontal_parallax_value'] && user_access('administer blocks')) {
+      db_update('block')
+        ->fields(array('horizontal_parallax_value' => $form_state['values']['horizontal_parallax_value']))
+        ->condition('module', $form_state['values']['module'])
+        ->condition('delta', $form_state['values']['delta'])
+        ->execute();
+
+      if (module_exists('context')) {
+        cache_clear_all('context', 'cache', TRUE);
+      }
+    }
+  }
+
+  if ($form_state['values']['form_id'] == 'block_admin_configure' || $form_state['values']['form_id'] == 'block_add_block_form') {
+    // Only save if value has changed
+    if (isset($form_state['values']['parallax_image']) && $form['settings']['parallax']['parallax_image']['#default_value'] != $form_state['values']['horizontal_parallax_value'] && user_access('administer blocks')) {      
+      if ($form_state['values']['parallax_image'] == '0') {
+        $form_state['values']['parallax_image'] = 'none';
+      }
+      
+      db_update('block')
+        ->fields(array('parallax_image' => $form_state['values']['parallax_image']))
+        ->condition('module', $form_state['values']['module'])
+        ->condition('delta', $form_state['values']['delta'])
+        ->execute();
+
+      $uid = 5;
+      // $result = db_query("SELECT * FROM  `block` WHERE `parallax_image` NOT LIKE 'none'", array(':uid' => $uid));
+      $sql = "SELECT * FROM  `block` WHERE `parallax_image` NOT LIKE 'none'";
+      $args = array(':uid' => $uid);
+      $row = db_query($sql, $args)->fetchAssoc();
+      dsm($row);
+
+      // $result->fetchAll();
+
+      $theme = parallax_block_current_theme();
+
+      $css = '';
+
+      foreach ($result as $record) {
+        $fid = $form_state['values']['parallax_image'];
+        // dsm($fid);
+        $file = file_load($fid);
+        if ($file) {
+          $filename = $file->filename;
+
+          if ($record->theme == $theme) {
+            $css .= "#block-block-" . $record->delta . " {\n";
+            if ($form_state['values']['background_size'] != "none") {
+              $css .= "background-size: " . $form_state['values']['background_size'] . ";\n";
+            }
+            if ($form_state['values']['parallax_image'] != "0") {
+              $filepath = drupal_realpath("public://parallax_block") . "/" . $filename;
+              $css .= "background-image: url(" . $filepath . ");\n";
+            }
+            $css .= "}\n\n";
+          }
+        }
+      }
+      // dsm($css);
+      if (module_exists('context')) {
+        cache_clear_all('context', 'cache', TRUE);
+      }
+    }
+  }
+}
+
+function parallax_block_current_theme() {
+  $current_theme = variable_get('theme_default','none');
+  $themes = list_themes();
+  $theme_object = $themes[$current_theme];
+  return $theme_object->name;
+}
