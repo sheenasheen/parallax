@@ -1,5 +1,6 @@
 <div id="page">
-<!--header-top-->
+
+    <!--header-top-->
     <div id="header-top">
         <div id="header-top-inside" class="clearfix container_12">
         	
@@ -9,16 +10,16 @@
                 <!--EOF:header-top-inside-left-->
             </div>
             
-            <!--<div class="grid_2">
+            <div class="grid_2">
                 <!--header-top-inside-left-feed-->
-               <!-- <div id="header-top-inside-left-feed">
+                <div id="header-top-inside-left-feed">
                     <div id="topSocial">
                     <ul>									
                         <li><a class="twitter" href="http://twitter.com/morethanthemes" title="Follow Us on Twitter!"></a></li>
                         <li><a class="facebook" href="http://www.facebook.com/pages/More-than-just-themes/194842423863081" title="Join Us on Facebook!"></a></li>
                         <li><a class="rss" title="RSS" href="#" title="Subcribe to Our RSS Feed"></a></li>
                     </ul>
-                    </div>-->
+                    </div>
                 </div>
                 <!--EOF:header-top-inside-left-feed-->
             </div>
@@ -32,9 +33,11 @@
         </div>
     </div>
     <!--EOF:header-top-->
-<div id="wrapper">
-<!--header-->
-<div id="header" class="clearfix container_12">
+
+    <div id="wrapper">
+
+        <!--header-->
+        <div id="header" class="clearfix container_12">
         	
             <div class="grid_5">
                 <!--logo-floater-->
@@ -156,28 +159,6 @@
                 <!--main-area-->
             </div>
         </div>
-         <div id="parallax-bottom">
-        
-        <div id="footer-bottom-inside" class="clearfix container_12">
-
-            <div class="grid_12">
-        	       
-            </div>
-
-        </div>
-
-        <div class="container_12">
-
-            <div class="grid_12">
-                <div class="credits-container clearfix">
-                    <a title="Brought To You By: www.SmashingMagazine.com" class="smashing" href="http://www.smashingmagazine.com" target="_blank">Brought to you By: www.SmashingMagazine.com</a>
-                    <a title="Drupalizing" class="drupalizing" href="http://www.drupalizing.com" target="_blank">Drupalizing</a> 
-                </div>  
-            </div> 
-        
-        </div> 
-            
-    </div>
         
     </div><!-- /#wrapper-->
 
