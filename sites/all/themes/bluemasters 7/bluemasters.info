@@ -17,6 +17,7 @@ scripts[] = js/icons.js
 scripts[] = js/modernizr.custom.js
 scripts[] = js/nlform.js
 scripts[] = js/skrollr.js
+scripts[] = js/skrollr.menu.min.js
 
 regions[header] = Header
 regions[search_area] = Search area

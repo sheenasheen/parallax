@@ -53,14 +53,14 @@
                 <!--navigation-->
                 <div id="navigation">
                    <?php print drupal_render($page['navigation']); ?>
-                   <ul id="mmnav Navitems">
-                 	 <li><a href="#Services">Services</a></li>
-                     <li><a href="#Portfolio">Portfolio</a></li>
-                     <li><a href="#Extra">Extra</a></li>
-                     <li><a href="#Social">Social</a></li>
-                     <li><a href="#About">About</a></li>
-                     <li><a href="#Extra2">Extra2</a></li>
-                     <li><a href="#Contact">Contact</a></li>
+                   <ul id="Navitems">
+                 	 <li><a href="#section-Services">Services</a></li>
+                     <li><a href="#section2-Portfolio">Portfolio</a></li>
+                     <li><a href="#section-Extra">Extra</a></li>
+                     <li><a href="#section-Social">Social</a></li>
+                     <li><a href="#section-About">About</a></li>
+                     <li><a href="#section-Extra2">Extra2</a></li>
+                     <li><a href="#section-Contact">Contact</a></li>
                    </ul>
                     
                 </div>
@@ -83,8 +83,7 @@
             </div>      
         </div>
     </div>
-    
- <a name="Services">   
+<section id="Services" data-menu-offset="-100">    
  <div id="wrapper-green">
         <div class="container_12">
        
@@ -141,8 +140,7 @@
 
     </div>
     <!--EOF:wrapper-->
-
-<a name="Portfolio">   
+<section id="Portfolio" data-menu-offset="-100">    
     <div id="wrapper-portfolio">
             <div class="container_12">
        
@@ -154,8 +152,9 @@
                 </div>
                 </div>
                 </div>
-      <a name="Extra">          
-        <div id="wrapper-default">
+                
+    <section id="Extra">
+       <div id="wrapper-default">
             <div class="container_12">
        
             <div class="grid_12">
@@ -166,7 +165,7 @@
                 </div>
                 </div>
                 </div>
-         <a name="Social">      
+         <section id="Social" data-menu-offset="-100">        
            <div id="wrapper-social">
             <div class="container_12">
        
@@ -179,7 +178,7 @@
                 </div>
                 </div>
                  <!--about-area-->
-       <a name="About">           
+     <section id="About" data-menu-offset="-100">          
    		<div id="wrapper-about">
             <div class="container_12">
               <div class="grid_12">
@@ -193,7 +192,7 @@
                             </div>
                         </div>
                     </div>
-          <a name="Extra2">           
+         <section id="Extra2" data-menu-offset="-100">           
            <div id="wrapper-white_section2">
             <div class="container_12">
               <div class="grid_12">
@@ -207,7 +206,7 @@
                             </div>
                         </div>
                     </div>
-             <a name="Contact">        
+             <section id="Contact" data-menu-offset="-100">      
               <div id="wrapper_contact">
             	<div class="container_12">
               		<div class="grid_12">
@@ -301,7 +300,27 @@
 	skrollr.init({
 		forceHeight: false
 	});
-	</script>
+	
+    var s = skrollr.init();
 
+skrollr.menu.init(s, {
+   
+    animate: true,
+    easing: 'sqrt',
+    scale: 2,
+
+    
+    duration: function(currentTop, targetTop) {
+        return 500;
+
+      
+    },
+
+   
+    handleLink: function(link) {
+        return 250;
+    }
+});
+</script>
 </div>
 <!--EOF:page-->
