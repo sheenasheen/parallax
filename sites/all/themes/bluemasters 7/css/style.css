@@ -151,7 +151,7 @@ P
 }
 BLOCKQUOTE
 {
-	background: #EEF0F5;
+	background: #EEF0F5 url('/sites/all/themes/bluemasters 7/images/quotemark.png') no-repeat top right;
 	margin: 20px 0;
 	padding: 20px;
 	color: #788093;
@@ -1016,6 +1016,46 @@ UL.pager A:hover
 #navigation .block-menu H2
 {
 	display: none;
+}
+.single-page-nav
+{
+	padding: 1.25em 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.single-page-nav UL
+{
+	list-style: none;
+	padding: 0 0px 0 0;
+	margin: 0 auto;
+	width: 65%;
+	overflow: hidden;
+}
+.single-page-nav LI
+{
+	float: left;
+	width: 13%;
+	text-align: center;
+}
+.single-page-nav A
+{
+	display: block;
+	color: #47A085;
+	border: 1px;
+	text-decoration: none;
+	font-size: 1.5em;
+	font-weight: 700;
+}
+.single-page-nav A:hover, .single-page-nav .current
+{
+	color: #0E6148;
+}
+.section
+{
+	padding: 1.25em 0 0em;
+	margin: 0 auto;
 }
 /*Superfish menu essential styles*/
 #navigation UL.sf-menu, #navigation UL.sf-menu *

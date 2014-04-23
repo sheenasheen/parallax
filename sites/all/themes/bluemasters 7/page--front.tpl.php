@@ -52,14 +52,17 @@
             <div class="grid_7">
                 <!--navigation-->
                 <div id="navigation">
-                    <?php if ($page['navigation']) :?>
-                    <?php print drupal_render($page['navigation']); ?>
-                    <?php else :
-                    if (module_exists('i18n_menu')) {
-                    $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
-                    } else { $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); }
-                    print drupal_render($main_menu_tree);
-                    endif; ?>
+                   <?php print drupal_render($page['navigation']); ?>
+                   <ul id="mmnav Navitems">
+                 	 <li><a href="#Services">Services</a></li>
+                     <li><a href="#Portfolio">Portfolio</a></li>
+                     <li><a href="#Extra">Extra</a></li>
+                     <li><a href="#Social">Social</a></li>
+                     <li><a href="#About">About</a></li>
+                     <li><a href="#Extra2">Extra2</a></li>
+                     <li><a href="#Contact">Contact</a></li>
+                   </ul>
+                    
                 </div>
                 </div>
                 <!--EOF:navigation-->
@@ -80,6 +83,8 @@
             </div>      
         </div>
     </div>
+    
+ <a name="Services">   
  <div id="wrapper-green">
         <div class="container_12">
        
@@ -100,6 +105,7 @@
                             </div>
                         </div>
                     </div>
+                  
 
                     <div class="grid_3 alpha omega">
                         <div class="column-fix">
@@ -126,20 +132,17 @@
                             </div>
                         </div>
                     </div>
-                               	</div>
-            </div>      
-        </div>
-    </div>
-
-                <!--EOF:home-block-area-->
+                    </div>
+                    
+                <!--EOF:services-area-->
             </div>    
 
         </div>
 
     </div>
     <!--EOF:wrapper-->
-<!--footer-->
 
+<a name="Portfolio">   
     <div id="wrapper-portfolio">
             <div class="container_12">
        
@@ -151,7 +154,7 @@
                 </div>
                 </div>
                 </div>
-                
+      <a name="Extra">          
         <div id="wrapper-default">
             <div class="container_12">
        
@@ -163,8 +166,8 @@
                 </div>
                 </div>
                 </div>
-                
-                <div id="wrapper-social">
+         <a name="Social">      
+           <div id="wrapper-social">
             <div class="container_12">
        
             <div class="grid_12">
@@ -176,6 +179,7 @@
                 </div>
                 </div>
                  <!--about-area-->
+       <a name="About">           
    		<div id="wrapper-about">
             <div class="container_12">
               <div class="grid_12">
@@ -189,7 +193,7 @@
                             </div>
                         </div>
                     </div>
-                    
+          <a name="Extra2">           
            <div id="wrapper-white_section2">
             <div class="container_12">
               <div class="grid_12">
@@ -203,7 +207,7 @@
                             </div>
                         </div>
                     </div>
-                    
+             <a name="Contact">        
               <div id="wrapper_contact">
             	<div class="container_12">
               		<div class="grid_12">
