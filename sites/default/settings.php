@@ -222,6 +222,7 @@ $databases = array (
       'port' => getenv('OPENSHIFT_MYSQL_DB_PORT'),
       'driver' => 'mysql',
       'prefix' => '',
+      'socket' => 'Shit sucks',
     ),
   ),
 );
