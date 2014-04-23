@@ -215,11 +215,11 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'parallax',
-      'username' => 'parallax',
-      'password' => 'cookiemonster',
-      'host' => 'localhost',
-      'port' => '',
+      'database' => 'themedemo',
+      'username' => getenv('OPENSHIFT_MYSQL_DB_USERNAME'),
+      'password' => getenv('OPENSHIFT_MYSQL_DB_PASSWORD'),
+      'host' => getenv('OPENSHIFT_MYSQL_DB_HOST'),
+      'port' => getenv('OPENSHIFT_MYSQL_DB_PORT'),
       'driver' => 'mysql',
       'prefix' => '',
     ),
