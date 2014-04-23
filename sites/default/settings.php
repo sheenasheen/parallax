@@ -216,13 +216,12 @@ $databases = array (
     'default' => 
     array (
       'database' => 'themedemo',
-      'username' => getenv('OPENSHIFT_MYSQL_DB_USERNAME'),
-      'password' => getenv('OPENSHIFT_MYSQL_DB_PASSWORD'),
-      'host' => getenv('OPENSHIFT_MYSQL_DB_HOST'),
-      'port' => getenv('OPENSHIFT_MYSQL_DB_PORT'),
+      'username' => 'admin4ADp2w8',
+      'password' => 'Hv3vWtZ4YTmG',
+      'host' => '127.3.157.130',
+      'port' => '3306',
       'driver' => 'mysql',
       'prefix' => '',
-      'socket' => 'Shit sucks',
     ),
   ),
 );
