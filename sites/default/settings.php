@@ -215,11 +215,11 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'themedemo',
-      'username' => 'admin4ADp2w8',
-      'password' => 'Hv3vWtZ4YTmG',
-      'host' => '127.3.157.130',
-      'port' => '3306',
+      'database' => 'parallax',
+      'username' => 'parallax',
+      'password' => 'cookiemonster',
+      'host' => 'localhost',
+      'port' => '',
       'driver' => 'mysql',
       'prefix' => '',
     ),
