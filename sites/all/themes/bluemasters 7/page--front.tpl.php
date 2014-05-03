@@ -53,7 +53,7 @@
                 <!--navigation-->
                 <div id="navigation">
                    <?php print drupal_render($page['navigation']); ?>
-                   <ul id="Navitems">
+                  <!-- <ul id="Navitems">
                  	 <li><a href="#section-Services">Services</a></li>
                      <li><a href="#section2-Portfolio">Portfolio</a></li>
                      <li><a href="#section-Extra">Extra</a></li>
@@ -64,7 +64,22 @@
                    </ul>
                     
                 </div>
-                </div>
+                </div>-->
+       
+                <input type='checkbox' id='toggle'/>
+                <div>
+                    <label for='toggle' class='toggle'></label>
+                        <ul class="menu">
+                     <li><a href="#section-Services">Services</a></li>
+                     <li><a href="#section2-Portfolio">Portfolio</a></li>
+                     <li><a href="#section-Extra">Extra</a></li>
+                     <li><a href="#section-Social">Social</a></li>
+                     <li><a href="#section-About">About</a></li>
+                     <li><a href="#section-Extra2">Extra2</a></li>
+                     <li><a href="#section-Contact">Contact</a></li>
+                        </ul>
+                        
+                        </div>
                 <!--EOF:navigation-->
             </div>
            
