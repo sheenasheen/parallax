@@ -471,15 +471,6 @@ font-size: 1.7em; padding: 10px; border-radius: 0 0 3px 0; -moz-border-radius: 0
 
 .credits-container a { text-decoration: underline; }
 
-a.smashing:link, a.smashing:active, a.smashing:visited, a.smashing:hover,  
-a.drupalizing:link, a.drupalizing:active, a.drupalizing:visited, a.drupalizing:hover {
-background: url("images/footer-logo-smashing.png") no-repeat scroll center top transparent; display: block; float: left;
-height: 54px; margin: 0; outline: 0 none; padding: 0; text-indent: -9999px; width: 154px; }
-
-a.drupalizing:link, a.drupalizing:active, a.drupalizing:visited, a.drupalizing:hover {
-background: url("images/footer-logo-drupalizing.png") no-repeat scroll center top transparent; }	
-
-
 /*
  * EXTRA
  */

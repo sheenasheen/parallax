@@ -1,139 +1,187 @@
-
-
-/*--------------------------------
- Functional Styles (Required)
----------------------------------*/
-
-.header { position: relative; }
-#toggle, .toggle { display: none; }
-.menu > li { list-style: none; float:left;	}
-
-/* Nicolas Gallagher micro clearfix */
-.clearfix:before, .clearfix:after { display: table; content: ""; }
-.clearfix:after { clear: both; }
-
-@media only screen and (max-width: 768px){
-	.menu { display: none; opacity: 0; width: 100%; position: absolute; right: 0; }
-	.menu > li { display: block; width: 100%; margin: 0; }
-	.menu > li > a { display: block; width: 100%; text-decoration: none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-	.toggle { display: block; position: relative; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
-	#toggle:checked + div .menu { display: block; opacity: 1;}
+.slicknav_menu
+{
+	display: none;
 }
-
-
-/*--------------------------------
- Presentation Styles (Editable)
----------------------------------*/
-.header{
-	min-height: 100px;
-	height: 100%;
-	padding: 0 20px;
-	background: #FFFFFF;
-}
-
-.header > h1 {
-	float: left;
-	padding: 30px 0 0;		
-	font-style: italic;
-	font-family: Georgia;
-	font-size: 28px;
-	color: #DFDFDF;
-}
-
-.nav{ 
-	display: block; 
-	float: right; 
-}
-
-.nav, .menu, .menu > li, .menu > li > a{ 
-	height: 100%; 
-}
-
-.menu > li > a{
-	display: block;
-	padding: 42px 20px;
-	text-decoration: none;
-	font-weight: normal;
-	font-size: 16px;
-	line-height: 1;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box; 
-	box-sizing: border-box;
-	-webkit-transition: all 0.25s linear;
-	-moz-transition: all 0.25s linear;
-	-o-transition: all 0.25s linear;
-	transition: all 0.25s linear;
-}
-
-.menu > li > a:hover, .menu > li > a:focus{
-	background: #F2F2F2;
-	box-shadow: inset 0px 5px #51C1F1;
-	color: #51C1F1;
-	padding: 50px 20px 34px;
-}
-
-.toggle{ 
-	z-index: 2; 
-}
-
-@media only screen and (max-width: 768px){
-	.menu{
-		background: #FFFFFF;
-		border-top: 1px solid #51C1F1;
+@media screen and (max-width: 875px)
+{
+	.js #menu
+	{
+		display: none;
 	}
-	
-	.menu, .menu > li, .menu > li > a{
-		height: auto;
-	}
-	
-	.menu > li > a{
-		padding: 15px 15px;
-	}
-	
-	.menu > li > a:hover, .menu > li > a:focus{
-		background: #F2F2F2;
-		box-shadow: inset 5px 0px #51C1F1;
-		padding: 15px 15px 15px 25px;
-	}
-	
-	.toggle:after {
-		content: attr(data-open);
+	.js .slicknav_menu
+	{
 		display: block;
-		width: 200px;
-		margin: 33px 0;
-		padding: 10px 50px;
-		background: #51C1F1;
-		-webkit-border-radius: 2px;
-		border-radius: 2px;
-		text-align: center;
-		font-size: 12px;
-		color: #FFFFFF;
-		-webkit-transition: all 0.5s linear;
-		-moz-transition: all 0.5s linear;
-		-o-transition: all 0.5s linear;
-		transition: all 0.5s linear;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box; 
-	}
-	
-	.toggle:hover:after{
-		background: #45ABD6;
-	}
-	
-	#toggle:checked + div .toggle:after{
-		content: attr(data-close);
 	}
 }
-
-@media only screen and (max-width: 479px){
-	.header > h1 { 
-		text-align: center;
-	}
-	.header > h1, .nav, .toggle:after{ 
-		float: none; 
-	}
-	.toggle:after { 
-		text-align: center; width: 100%; 
-	}
+.slicknav_btn
+{
+	position: relative;
+	display: block;
+	vertical-align: middle;
+	float: right;
+	padding: 0.438em 0.625em;
+	line-height: 1.125em;
+	cursor: pointer;
 }
+.slicknav_menu .slicknav_menutxt
+{
+	display: block;
+	line-height: 1.188em;
+	float: left;
+}
+.slicknav_menu .slicknav_icon
+{
+	float: left;
+	margin: 0.188em 0 0 0.438em;
+}
+.slicknav_menu .slicknav_no-text
+{
+	margin: 0;
+}
+.slicknav_menu .slicknav_icon-bar
+{
+	display: block;
+	width: 1.125em;
+	height: 0.125em;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+.slicknav_btn .slicknav_icon-bar + .slicknav_icon-bar
+{
+	margin-top: 0.188em;
+}
+.slicknav_nav
+{
+	clear: both;
+}
+.slicknav_nav UL, .slicknav_nav LI
+{
+	display: block;
+}
+.slicknav_nav .slicknav_arrow
+{
+	font-size: 0.8em;
+	margin: 0 0 0 0.4em;
+}
+.slicknav_nav .slicknav_item
+{
+	display: block;
+	cursor: pointer;
+}
+.slicknav_nav A
+{
+	display: block;
+}
+.slicknav_nav .slicknav_item A
+{
+	display: inline;
+}
+.slicknav_menu:before, .slicknav_menu:after
+{
+	content: " ";
+	display: table;
+}
+.slicknav_menu:after
+{
+	clear: both;
+}
+/*IE6/7 support*/
+.slicknav_menu
+{
+	=zoom: 1;
+}
+/* 
+User Default Style
+Change the following styles to modify the appearance of the menu.
+*/
+.slicknav_menu
+{
+	font-size: 16px;
+}
+/*Button*/
+.slicknav_btn
+{
+	margin: 5px 5px 6px;
+	text-decoration: none;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background-color: #222222;
+}
+/*Button Text*/
+.slicknav_menu .slicknav_menutxt
+{
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: 0 1px 3px #000;
+}
+/*Button Lines*/
+.slicknav_menu .slicknav_icon-bar
+{
+	background-color: #F5F5F5;
+}
+.slicknav_menu
+{
+	background: #4C4C4C;
+	padding: 5px;
+}
+.slicknav_nav
+{
+	color: #FFF;
+	margin: 0;
+	padding: 0;
+	font-size: 0.875em;
+}
+.slicknav_nav, .slicknav_nav UL
+{
+	list-style: none;
+	overflow: hidden;
+}
+.slicknav_nav UL
+{
+	padding: 0;
+	margin: 0 0 0 20px;
+}
+.slicknav_nav .slicknav_item
+{
+	padding: 5px 10px;
+	margin: 2px 5px;
+}
+.slicknav_nav A
+{
+	padding: 5px 10px;
+	margin: 2px 5px;
+	text-decoration: none;
+	color: #FFF;
+}
+.slicknav_nav .slicknav_item A
+{
+	padding: 0;
+	margin: 0;
+}
+.slicknav_nav .slicknav_item:hover
+{
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background: #CCC;
+	color: #FFF;
+}
+.slicknav_nav A:hover
+{
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background: #CCC;
+	color: #222;
+}
+.slicknav_nav .slicknav_txtnode
+{
+	margin-left: 15px;
+}
+/*Functional Styles (Required)*/

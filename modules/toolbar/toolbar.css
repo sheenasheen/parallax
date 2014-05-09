@@ -45,7 +45,7 @@ BODY.toolbar-drawer
 	box-shadow: 0 3px 20px #000;
 	filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10');
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10')";
-	z-index: 600;
+	z-index: 1000000;
 }
 #toolbar DIV.collapsed
 {
